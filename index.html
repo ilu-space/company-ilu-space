@@ -962,18 +962,18 @@
     <div class="contact-form-wrap reveal">
       <h3>Start the Conversation</h3>
       <p class="sub">Share a bit about your project and the best way to reach you — we'll be in touch to schedule a call.</p>
-      <form id="contact-form">
+      <form action="https://api.madmantra.app/api/landing/ilu-space/signup" method="POST">
         <div class="form-group">
-          <input type="text" placeholder="Your name" required>
+          <input type="text" name="name" placeholder="Your name" required>
         </div>
         <div class="form-group">
-          <input type="email" placeholder="Work email" required>
+          <input type="email" name="email" placeholder="Work email" required>
         </div>
         <div class="form-group">
-          <input type="text" placeholder="Company or organization">
+          <input type="text" name="company" placeholder="Company or organization">
         </div>
         <div class="form-group">
-          <select>
+          <select name="interest">
             <option value="" disabled selected>What are you exploring?</option>
             <option>Technical Co-Founder on Demand</option>
             <option>AI Integration Sprint</option>
@@ -985,7 +985,7 @@
           </select>
         </div>
         <div class="form-group">
-          <textarea placeholder="Briefly describe what you're working on or trying to solve..."></textarea>
+          <textarea name="description" placeholder="Briefly describe what you're working on or trying to solve..."></textarea>
         </div>
         <button type="submit" class="form-submit">Send & Request a Call →</button>
       </form>
@@ -1032,24 +1032,6 @@
 
   document.querySelectorAll('.reveal').forEach(function(el) {
     observer.observe(el);
-  });
-</script>
-<script>
-  document.querySelectorAll('form').forEach(function(form) {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var emailInput = form.querySelector('input[type="email"]');
-      var email = emailInput ? emailInput.value : '';
-      fetch('https://api.madmantra.app/api/landing/ilu-space/signup', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({email: email})
-      }).then(function() {
-        form.innerHTML = '<p style="padding:20px 12px;color:#4ADE80;font-weight:600;font-size:1rem;text-align:center;">✓ Thanks! We\'ll be in touch within one business day to set up a call.</p>';
-      }).catch(function() {
-        form.innerHTML = '<p style="padding:20px 12px;color:#4ADE80;font-weight:600;font-size:1rem;text-align:center;">✓ Thanks! We\'ll be in touch within one business day to set up a call.</p>';
-      });
-    });
   });
 </script>
 <script>document.querySelectorAll('.year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
