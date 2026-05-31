@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ilu Space — AI-Native Product Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0F1117;
+    --bg2: #161820;
+    --bg3: #1C1F2E;
+    --blue: #3B82F6;
+    --blue-light: #60A5FA;
+    --blue-dark: #1D4ED8;
+    --text: #E8EAF0;
+    --text-muted: #8892A4;
+    --border: rgba(59,130,246,0.18);
+    --card-bg: rgba(28,31,46,0.85);
+    --radius: 14px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+  }
+
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { color: var(--blue-light); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 6vw;
+    background: rgba(15,17,23,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(59,130,246,0.10);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--blue); }
+
+  .nav-cta {
+    background: var(--blue);
+    color: #fff;
+    padding: 9px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-cta:hover { background: var(--blue-dark); color: #fff; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 6vw 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+
+  .hero-glow {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 400px;
+    background: radial-gradient(ellipse, rgba(59,130,246,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(59,130,246,0.3);
+    color: var(--blue-light);
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 28px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .hero-badge::before { content: '●'; font-size: 0.6rem; color: var(--blue); }
+
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+  }
+
+  .hero h1 .accent { color: var(--blue); }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-muted);
+    max-width: 640px;
+    margin: 0 auto 40px;
+    line-height: 1.8;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--blue-dark); color: #fff; transform: translateY(-2px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text);
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: border-color 0.2s, color 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-2px); }
+
+  .hero-tags {
+    margin-top: 52px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .tag {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    padding: 5px 13px;
+    border-radius: 50px;
+  }
+
+  /* ── SECTIONS SHARED ── */
+  section { padding: 90px 6vw; }
+
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: #fff;
+    margin-bottom: 16px;
+    letter-spacing: -0.5px;
+  }
+
+  .section-desc {
+    color: var(--text-muted);
+    max-width: 560px;
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  .section-header { margin-bottom: 56px; }
+
+  /* ── WHAT WE BUILD ── */
+  .services-bg { background: var(--bg2); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 22px;
+  }
+
+  .service-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    transition: border-color 0.25s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), transparent);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .service-card:hover { border-color: rgba(59,130,246,0.4); transform: translateY(-4px); }
+  .service-card:hover::before { opacity: 1; }
+
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .service-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .service-card p {
+    color: var(--text-muted);
+    font-size: 0.93rem;
+    line-height: 1.75;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .method-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    position: relative;
+  }
+
+  .method-steps::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    opacity: 0.35;
+  }
+
+  .step {
+    padding: 0 20px 0;
+    text-align: center;
+    position: relative;
+  }
+
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(59,130,246,0.12);
+    border: 2px solid var(--blue);
+    color: var(--blue);
+    font-weight: 800;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    z-index: 2;
+    background: var(--bg);
+  }
+
+  .step h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .step p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ── VERTICALS ── */
+  .verticals-bg { background: var(--bg3); }
+
+  .verticals-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .vertical-pill {
+    background: rgba(59,130,246,0.08);
+    border: 1px solid rgba(59,130,246,0.22);
+    border-radius: 50px;
+    padding: 10px 22px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--blue-light);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .verticals-detail {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+
+  .vd-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+  }
+
+  .vd-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .vd-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* ── FOUNDER ── */
+  .founder-section { background: var(--bg2); }
+
+  .founder-inner {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: start;
+    max-width: 900px;
+  }
+
+  .founder-avatar-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .founder-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+    border: 3px solid rgba(59,130,246,0.4);
+  }
+
+  .founder-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    text-align: center;
+  }
+
+  .founder-loc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .founder-bio {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.85;
+  }
+
+  .founder-bio p { margin-bottom: 14px; }
+  .founder-bio p:last-child { margin-bottom: 0; }
+
+  .founder-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .founder-tag {
+    background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.25);
+    color: var(--blue-light);
+    font-size: 0.78rem;
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-weight: 600;
+  }
+
+  /* ── FAQ ── */
+  .faq-list { max-width: 740px; }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    padding: 24px 0;
+  }
+
+  .faq-item:first-child { border-top: 1px solid rgba(255,255,255,0.07); }
+
+  .faq-q {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .faq-q::before {
+    content: 'Q';
+    background: var(--blue);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .faq-a {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    padding-left: 34px;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: linear-gradient(135deg, var(--bg3) 0%, rgba(29,78,216,0.15) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  .cta-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .cta-section h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  .cta-section p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 36px;
+  }
+
+  .cta-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
+    text-align: left;
+  }
+
+  .cta-option {
+    background: rgba(15,17,23,0.7);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 22px;
+  }
+
+  .cta-option h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .cta-option p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    line-height: 1.65;
+  }
+
+  /* ── CONTACT FORM ── */
+  .contact-form-wrap {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 36px 32px;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .contact-form-wrap h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .contact-form-wrap .sub {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+
+  .form-group {
+    margin-bottom: 14px;
+  }
+
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 12px 14px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.93rem;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--blue);
+  }
+
+  .form-group input::placeholder, .form-group textarea::placeholder {
+    color: var(--text-muted);
+  }
+
+  .form-group select option { background: var(--bg2); }
+
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    padding: 13px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 6px;
+  }
+
+  .form-submit:hover { background: var(--blue-dark); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0A0C10;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 40px 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: gap;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+  }
+
+  .footer-logo span { color: var(--blue); }
+
+  .footer-meta {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .footer-meta a { color: var(--text-muted); }
+  .footer-meta a:hover { color: var(--blue-light); }
+
+  .footer-right {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .footer-right a { color: var(--text-muted); }
+  .footer-right a:hover { color: var(--blue-light); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59,130,246,0.2), transparent);
+    margin: 0 6vw;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .founder-inner { grid-template-columns: 1fr; gap: 36px; }
+    .founder-avatar-wrap { flex-direction: row; align-items: center; justify-content: flex-start; gap: 20px; }
+    .founder-name, .founder-loc { text-align: left; }
+    .method-steps { grid-template-columns: 1fr 1fr; }
+    .method-steps::before { display: none; }
+    .verticals-detail { grid-template-columns: 1fr; }
+    .cta-options { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-meta, .footer-right { text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 14px 4vw; }
+    section { padding: 70px 4vw; }
+    .method-steps { grid-template-columns: 1fr; }
+    .contact-form-wrap { padding: 24px 18px; }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  .js .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Ilu<span>Space</span></div>
+  <a href="#contact" class="nav-cta">Book a Discovery Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">Helsinki · AI-Native Product Studio</div>
+    <h1>We Build & Ship<br><span class="accent">AI Products</span><br>for the Real World</h1>
+    <p class="hero-sub">From concept to deployed product — hardware, embedded systems, AI/ML, and full-stack software. A technical co-founder on demand for companies who need to move fast with AI.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Book a Discovery Call</a>
+      <a href="#services" class="btn-ghost">See What We Build</a>
+    </div>
+    <div class="hero-tags">
+      <span class="tag">Robotics</span>
+      <span class="tag">AI Agents</span>
+      <span class="tag">Eldercare Tech</span>
+      <span class="tag">Climate Software</span>
+      <span class="tag">Embedded Systems</span>
+      <span class="tag">Full-Stack</span>
+      <span class="tag">Nordic Market</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SERVICES -->
+<section id="services" class="services-bg">
+  <div class="section-header reveal">
+    <span class="section-label">What We Build</span>
+    <h2 class="section-title">Six Ways We Work With You</h2>
+    <p class="section-desc">From a rapid 2-week sprint to a full co-built venture — every engagement is shaped around what your company actually needs, not a packaged retainer.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">🛠️</span>
+      <h3>Technical Co-Founder on Demand</h3>
+      <p>End-to-end product builds from concept to deployment — software, hardware, embedded systems, AI. A full technical co-founder without the equity table complexity. Proven across robotics, SaaS, and AI agents.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">⚡</span>
+      <h3>AI Integration Sprints</h3>
+      <p>Packaged 2–4 week AI implementation sprints for existing businesses. Identify the highest-impact automation opportunities in your workflow and ship working solutions fast — not slide decks.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🤝</span>
+      <h3>Co-Built Ventures</h3>
+      <p>Bring your domain expertise, we bring the technology. Joint product builds with shared upside — ideal for industry experts sitting on a problem worth solving with AI.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🤖</span>
+      <h3>Full-Stack AI Robotics</h3>
+      <p>Rare capability spanning hardware design, 3D-printed enclosures, embedded systems, AI voice interaction, and cloud infrastructure. Proven in deployed eldercare robotics across Finnish care facilities.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🏥</span>
+      <h3>Nordic Eldercare & Health AI</h3>
+      <p>Deep vertical expertise in AI solutions for eldercare and health — from physical robots to software platforms. Positioned for the Nordic market's acute care workforce challenges and strong public funding.</p>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🌍</span>
+      <h3>Climate & ESG Product Development</h3>
+      <p>Built and shipped enterprise carbon tracking and ESG reporting platforms. Understands the regulatory landscape and can build compliance-ready sustainability software.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <div class="section-header reveal">
+    <span class="section-label">Methodology</span>
+    <h2 class="section-title">How We Engage</h2>
+    <p class="section-desc">A no-nonsense process built for companies that want to ship — not spend six months in discovery workshops.</p>
+  </div>
+  <div class="method-steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <h3>Discovery Call</h3>
+      <p>Understand your problem space, existing stack, constraints, and what "done" actually looks like. No pitch deck — just a direct technical conversation.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">02</div>
+      <h3>Scope & Proposal</h3>
+      <p>A concrete scope of work: what gets built, what stack, what timeline, what cost. Written plainly so your whole team can evaluate it without a translator.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">03</div>
+      <h3>Build & Iterate</h3>
+      <p>Weekly check-ins, working software in your hands fast. Adjust as reality hits — flexibility is a feature, not a bug, in real-world AI product work.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">04</div>
+      <h3>Deploy & Hand Over</h3>
+      <p>Live in production. Documentation your team can maintain. Optionally, ongoing support or a longer co-founder-style engagement — your call.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VERTICALS -->
+<section class="verticals-bg">
+  <div class="section-header reveal">
+    <span class="section-label">Industries</span>
+    <h2 class="section-title">Where We Go Deep</h2>
+    <p class="section-desc">AI is general-purpose but expertise is not. These are the verticals where Ilu Space brings both technical depth and real-world domain knowledge.</p>
+  </div>
+  <div class="verticals-grid reveal">
+    <div class="vertical-pill">🏥 Eldercare & Senior Health</div>
+    <div class="vertical-pill">🌱 Climate & ESG</div>
+    <div class="vertical-pill">🚚 Logistics & Supply Chain</div>
+    <div class="vertical-pill">🏭 Manufacturing & Industry</div>
+    <div class="vertical-pill">🤖 Robotics & Automation</div>
+    <div class="vertical-pill">🧠 Healthcare AI</div>
+    <div class="vertical-pill">📊 Enterprise SaaS</div>
+    <div class="vertical-pill">⚡ Energy & Grid Tech</div>
+  </div>
+  <div class="verticals-detail">
+    <div class="vd-card reveal">
+      <h3><span>🏥</span> Eldercare & Health AI</h3>
+      <p>The Nordic care system faces a structural workforce shortage that technology can meaningfully address. Ilu Space has deployed AI-powered robotics in Finnish care facilities — this isn't theoretical. We understand procurement cycles, care staff workflows, and what patients actually need from technology.</p>
+    </div>
+    <div class="vd-card reveal">
+      <h3><span>🌍</span> Climate & Compliance Software</h3>
+      <p>ESG reporting requirements are tightening across the EU. Companies need tools that handle data collection, calculation methodology, and audit-ready output. We've shipped production-grade carbon tracking platforms and understand the regulatory landscape from CSRD to Scope 3 accounting.</p>
+    </div>
+    <div class="vd-card reveal">
+      <h3><span>🏭</span> Industrial & Manufacturing AI</h3>
+      <p>Factory floors, logistics networks, and supply chains generate enormous amounts of data that most companies aren't using. We build AI applications that integrate with existing OT/IT infrastructure — predictive maintenance, anomaly detection, optimization — without requiring greenfield replacement.</p>
+    </div>
+    <div class="vd-card reveal">
+      <h3><span>🤖</span> Embedded AI & Hardware</h3>
+      <p>Most AI studios stop at software. We span the full stack — from cloud inference down to embedded firmware, custom PCB design, and 3D-printed enclosures. If your AI product needs to live in the physical world, this is a rare capability that matters enormously at deployment time.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FOUNDER -->
+<section id="founder" class="founder-section">
+  <div class="section-header reveal">
+    <span class="section-label">Who You're Working With</span>
+    <h2 class="section-title">A Solo Builder With Deep Range</h2>
+  </div>
+  <div class="founder-inner">
+    <div class="founder-avatar-wrap reveal">
+      <div class="founder-avatar">👨‍💻</div>
+      <div>
+        <div class="founder-name">Founder, Ilu Space</div>
+        <div class="founder-loc">📍 Helsinki, Finland</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="founder-bio">
+        <p>Ilu Space was founded by a technical builder who doesn't fit a single job description — and that's the point. The range spans embedded firmware to cloud infrastructure, hardware product design to machine learning pipelines, robotics to enterprise SaaS. That breadth isn't accidental; it's what lets an AI product actually ship.</p>
+        <p>Most AI projects fail not because the models don't work, but because someone didn't understand the full stack well enough to connect the pieces. Having built and deployed products across eldercare robotics in Finnish care facilities, enterprise ESG platforms, and AI agent systems gives Ilu Space an unusually grounded view of what works in production — not just in demos.</p>
+        <p>This is a studio built on the belief that most companies don't need a large agency or a full-time CTO. They need a trusted technical partner who can step in, move fast, and ship something real. That's the whole model.</p>
+      </div>
+      <div class="founder-tags">
+        <span class="founder-tag">AI/ML Engineering</span>
+        <span class="founder-tag">Embedded Systems</span>
+        <span class="founder-tag">Hardware Design</span>
+        <span class="founder-tag">Full-Stack Web</span>
+        <span class="founder-tag">Robotics</span>
+        <span class="founder-tag">Cloud Infrastructure</span>
+        <span class="founder-tag">Product Strategy</span>
+        <span class="founder-tag">Helsinki-based</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-header reveal">
+    <span class="section-label">Common Questions</span>
+    <h2 class="section-title">Things Worth Saying Plainly</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <div class="faq-q">You're a solo studio. Can you actually handle a full product build?</div>
+      <div class="faq-a">Yes — that's specifically what this is designed for. Many product builds are over-staffed with people who are coordinating rather than building. A single senior technical builder who can span the stack often moves faster and with fewer miscommunications than a team of specialists. For projects that need specific expertise (e.g. a specialist embedded engineer or a regulatory specialist), Ilu Space maintains a network of trusted collaborators who can be brought in scoped and cleanly.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">How is this different from hiring a freelancer or a development agency?</div>
+      <div class="faq-a">A freelancer typically executes a defined brief. An agency manages a team executing your brief. Ilu Space operates as a technical co-founder — which means helping shape what to build, not just how to build it. The goal is to bring product judgment, not just execution. If you already know exactly what to build down to the spec, a freelancer is cheaper. If you're figuring out what AI product will actually move the needle for your business, this engagement model is more useful.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">What does an AI Integration Sprint actually deliver?</div>
+      <div class="faq-a">A working, deployed system — not a report or a proof of concept that lives in a Jupyter notebook. Sprints typically start with a one-week diagnostic to identify the highest-leverage automation in your workflow, followed by two to three weeks of build and integration. You get working software in your stack by the end of it. The scope is intentionally bounded so it can actually be completed in the timeframe.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">What is the Co-Built Ventures model and who is it for?</div>
+      <div class="faq-a">It's for people who have deep domain expertise and a real problem, but lack the technical capability to build a product. If you've spent 20 years in logistics and you know exactly where the inefficiency is but can't build the software yourself — that's the profile. Ilu Space brings the full technical build, and we structure an arrangement with shared economics appropriate to the contribution. These conversations happen on a case-by-case basis.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">Do you work with companies outside Finland or the Nordics?</div>
+      <div class="faq-a">Yes. The Nordic market is a primary focus given the eldercare, climate, and industrial context — but the work itself is remote-compatible and the client base is intentionally global. If you're based in the EU, UK, or further afield and the problem is a good fit, geography is not a barrier.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">What does engagement cost?</div>
+      <div class="faq-a">Pricing is scoped per project and varies considerably depending on scope, duration, and engagement type. AI Integration Sprints are bounded and priced as fixed-scope packages. Co-founder engagements and larger builds are typically structured with a monthly retainer plus milestone payments. The right starting point is a discovery call — there's no pressure and no pitch, just a direct conversation about whether there's a fit worth pursuing.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CTA / CONTACT -->
+<section id="contact" class="cta-section">
+  <div class="cta-inner">
+    <div class="reveal">
+      <span class="section-label" style="display:block;text-align:center;">Let's Talk</span>
+      <h2>Book a Discovery Call</h2>
+      <p>No pitch. No sales deck. A direct conversation about your problem and whether Ilu Space is the right fit to help you solve it. You'll hear plainly if it's not.</p>
+    </div>
+    <div class="contact-form-wrap reveal">
+      <h3>Start the Conversation</h3>
+      <p class="sub">Share a bit about your project and the best way to reach you — we'll be in touch to schedule a call.</p>
+      <form id="contact-form">
+        <div class="form-group">
+          <input type="text" placeholder="Your name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="Work email" required>
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Company or organization">
+        </div>
+        <div class="form-group">
+          <select>
+            <option value="" disabled selected>What are you exploring?</option>
+            <option>Technical Co-Founder on Demand</option>
+            <option>AI Integration Sprint</option>
+            <option>Co-Built Venture</option>
+            <option>Eldercare / Health AI</option>
+            <option>Climate / ESG Software</option>
+            <option>Robotics / Embedded AI</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Briefly describe what you're working on or trying to solve..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Send & Request a Call →</button>
+      </form>
+    </div>
+    <div class="cta-options reveal">
+      <div class="cta-option">
+        <h4>⚡ Fast Track: AI Sprint</h4>
+        <p>Know you want to pilot AI in your workflow but not sure where to start? Book directly for a sprint scoping session.</p>
+        <a href="#contact" class="btn-primary" style="font-size:0.88rem;padding:10px 20px;">Book Sprint Scoping</a>
+      </div>
+      <div class="cta-option">
+        <h4>🤝 Domain Expert + AI</h4>
+        <p>Have deep industry knowledge and a problem worth solving? Let's explore a co-built venture with shared economics.</p>
+        <a href="#contact" class="btn-primary" style="font-size:0.88rem;padding:10px 20px;">Explore Co-Build</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Ilu<span>Space</span></div>
+  <div class="footer-meta">
+    © <span class="year"></span> Ilu Space. Helsinki, Finland.<br>
+    AI-Native Product Studio — We Build & Ship AI Products for the Real World.
+  </div>
+  <div class="footer-right">
+    Powered by <a href="https://madmantra.com" target="_blank" rel="noopener">MadMantra</a>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>document.documentElement.classList.add('js');</script>
+<script>
+  // Scroll reveal
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(function(el) {
+    observer.observe(el);
+  });
+</script>
+<script>
+  document.querySelectorAll('form').forEach(function(form) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var emailInput = form.querySelector('input[type="email"]');
+      var email = emailInput ? emailInput.value : '';
+      fetch('https://api.madmantra.app/api/landing/ilu-space/signup', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email: email})
+      }).then(function() {
+        form.innerHTML = '<p style="padding:20px 12px;color:#4ADE80;font-weight:600;font-size:1rem;text-align:center;">✓ Thanks! We\'ll be in touch within one business day to set up a call.</p>';
+      }).catch(function() {
+        form.innerHTML = '<p style="padding:20px 12px;color:#4ADE80;font-weight:600;font-size:1rem;text-align:center;">✓ Thanks! We\'ll be in touch within one business day to set up a call.</p>';
+      });
+    });
+  });
+</script>
+<script>document.querySelectorAll('.year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
+</body>
+</html>
