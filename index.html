@@ -646,6 +646,34 @@
 
   .form-submit:hover { background: var(--blue-dark); }
 
+  /* ── FORM SUCCESS ── */
+  .form-success-msg {
+    display: none;
+    text-align: center;
+    padding: 24px 0 8px;
+  }
+
+  .form-success-msg .success-icon {
+    font-size: 2.8rem;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .form-success-msg h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .form-success-msg p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
   /* ── FOOTER ── */
   footer {
     background: #0A0C10;
@@ -962,7 +990,7 @@
     <div id="contact-form" class="contact-form-wrap reveal">
       <h3>Start the Conversation</h3>
       <p class="sub">Share a bit about your project and the best way to reach you — we'll be in touch to schedule a call.</p>
-      <form action="https://api.madmantra.app/api/landing/ilu-space/signup" method="POST">
+      <form id="discovery-form" action="https://api.madmantra.app/api/landing/ilu-space/signup" method="POST">
         <div class="form-group">
           <input type="text" name="name" placeholder="Your name" required>
         </div>
@@ -989,6 +1017,11 @@
         </div>
         <button type="submit" class="form-submit">Send & Request a Call →</button>
       </form>
+      <div id="form-success" class="form-success-msg">
+        <span class="success-icon">✅</span>
+        <h3>Message received!</h3>
+        <p>Thanks for reaching out. We'll be in touch shortly to schedule a call.</p>
+      </div>
     </div>
     <div class="cta-options reveal">
       <div class="cta-option">
@@ -1035,5 +1068,20 @@
   });
 </script>
 <script>document.querySelectorAll('.year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
+<script>
+  // Show success message and scroll to form after submission
+  if (window.location.search.indexOf('signup=success') !== -1) {
+    var form = document.getElementById('discovery-form');
+    var success = document.getElementById('form-success');
+    if (form) form.style.display = 'none';
+    if (success) success.style.display = 'block';
+    var formWrap = document.getElementById('contact-form');
+    if (formWrap) {
+      setTimeout(function() {
+        formWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+  }
+</script>
 </body>
 </html>
