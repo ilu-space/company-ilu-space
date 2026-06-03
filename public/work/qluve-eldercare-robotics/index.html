@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Eldercare Robot Deployed in Finland — Qluve Case Study</title>
+<meta name="description" content="How Ilu Space built Qluve — a voice-powered AI companion robot — deployed across Finnish care facilities. Hardware, embedded AI, caregiver dashboard.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ilu-space.madmantra.app/work/qluve-eldercare-robotics">
+
+<!-- Social / OG -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ilu-space.madmantra.app/work/qluve-eldercare-robotics">
+<meta property="og:title" content="AI Eldercare Robot Deployed in Finland — Qluve Case Study">
+<meta property="og:description" content="How Ilu Space built Qluve — a voice-powered AI companion robot — deployed across Finnish care facilities. Hardware, embedded AI, caregiver dashboard.">
+<meta property="og:image" content="https://www.madmantra.com/og/landing?name=Ilu%20Space&tagline=AI%20Eldercare%20Robot%20Deployed%20in%20Finland&slug=ilu-space">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI Eldercare Robot Deployed in Finland — Qluve Case Study">
+<meta name="twitter:description" content="How Ilu Space built Qluve — a voice-powered AI companion robot — deployed across Finnish care facilities. Hardware, embedded AI, caregiver dashboard.">
+<meta name="twitter:image" content="https://www.madmantra.com/og/landing?name=Ilu%20Space&tagline=AI%20Eldercare%20Robot%20Deployed%20in%20Finland&slug=ilu-space">
+<meta name="twitter:site" content="@madmantra">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0F1117;
+    --bg2: #161820;
+    --bg3: #1C1F2E;
+    --blue: #3B82F6;
+    --blue-light: #60A5FA;
+    --blue-dark: #1D4ED8;
+    --text: #E8EAF0;
+    --text-muted: #8892A4;
+    --border: rgba(59,130,246,0.18);
+    --card-bg: rgba(28,31,46,0.85);
+    --radius: 14px;
+    --content-width: 740px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+  }
+
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { color: var(--blue-light); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 6vw;
+    background: rgba(15,17,23,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(59,130,246,0.10);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--blue); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-back {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .nav-back:hover { color: var(--blue-light); }
+
+  .nav-cta {
+    background: var(--blue);
+    color: #fff;
+    padding: 9px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-cta:hover { background: var(--blue-dark); color: #fff; }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    padding: 120px 6vw 60px;
+    max-width: calc(var(--content-width) + 12vw);
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .breadcrumb a { color: var(--text-muted); }
+  .breadcrumb a:hover { color: var(--blue-light); }
+  .breadcrumb span { color: rgba(255,255,255,0.2); }
+
+  .case-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(59,130,246,0.3);
+    color: var(--blue-light);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    line-height: 1.15;
+  }
+
+  .page-header h1 .accent { color: var(--blue); }
+
+  .header-summary {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 600px;
+    margin-bottom: 36px;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .meta-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .meta-value {
+    font-size: 0.9rem;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  /* ── CONTENT ── */
+  .content-wrap {
+    max-width: calc(var(--content-width) + 12vw);
+    margin: 0 auto;
+    padding: 0 6vw 80px;
+  }
+
+  .content-body {
+    max-width: var(--content-width);
+  }
+
+  /* Section block */
+  .cs-section {
+    margin-bottom: 60px;
+  }
+
+  .cs-section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cs-section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(59,130,246,0.15);
+    max-width: 60px;
+  }
+
+  .cs-section h2 {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    color: #fff;
+    margin-bottom: 18px;
+    letter-spacing: -0.3px;
+  }
+
+  .cs-section p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.85;
+    margin-bottom: 14px;
+  }
+
+  .cs-section p:last-child { margin-bottom: 0; }
+
+  .cs-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cs-section ul li {
+    color: var(--text-muted);
+    font-size: 0.97rem;
+    line-height: 1.75;
+    padding-left: 22px;
+    position: relative;
+  }
+
+  .cs-section ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 0.85rem;
+    top: 2px;
+  }
+
+  /* Stack grid */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .stack-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+
+  .stack-card-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+
+  .stack-card p {
+    font-size: 0.88rem !important;
+    color: var(--text-muted);
+    line-height: 1.65 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Deployed list */
+  .deployed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+  }
+
+  .deployed-item {
+    background: rgba(59,130,246,0.06);
+    border: 1px solid rgba(59,130,246,0.18);
+    border-radius: 10px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .deployed-item-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .deployed-item-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  .deployed-item-text strong {
+    display: block;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 2px;
+    font-size: 0.92rem;
+  }
+
+  /* Learnings / demonstrates list */
+  .insight-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .insight-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+  }
+
+  .insight-item h4 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .insight-item p {
+    font-size: 0.9rem !important;
+    color: var(--text-muted);
+    line-height: 1.75 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 28px 0;
+  }
+
+  .stat-item {
+    flex: 1;
+    min-width: 120px;
+    padding: 22px 24px;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--blue-light);
+    display: block;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-desc {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* CTA block */
+  .cs-cta {
+    background: linear-gradient(135deg, var(--bg3) 0%, rgba(29,78,216,0.12) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 40px 36px;
+    margin-top: 60px;
+    text-align: center;
+  }
+
+  .cs-cta h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  .cs-cta p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.8;
+    max-width: 480px;
+    margin: 0 auto 28px;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--blue-dark); color: #fff; transform: translateY(-2px); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59,130,246,0.15), transparent);
+    margin: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0A0C10;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 40px 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+  }
+
+  .footer-logo span { color: var(--blue); }
+
+  .footer-meta {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .footer-meta a { color: var(--text-muted); }
+  .footer-meta a:hover { color: var(--blue-light); }
+
+  .footer-right {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .footer-right a { color: var(--text-muted); }
+  .footer-right a:hover { color: var(--blue-light); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .meta-row { gap: 14px; }
+    .stats-bar { flex-direction: column; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat-item:last-child { border-bottom: none; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-meta, .footer-right { text-align: center; }
+    .cs-cta { padding: 28px 20px; }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 14px 4vw; }
+    .page-header { padding: 100px 4vw 40px; }
+    .content-wrap { padding: 0 4vw 60px; }
+    .nav-back { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Ilu<span>Space</span></a>
+  <div class="nav-right">
+    <a href="/#work" class="nav-back">← Selected Work</a>
+    <a href="/#contact" class="nav-cta">Book a Discovery Call</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Ilu Space</a>
+    <span>/</span>
+    <a href="/#work">Work</a>
+    <span>/</span>
+    Qluve
+  </div>
+  <div class="case-label">Case Study · Eldercare Robotics</div>
+  <h1>Voice-Powered <span class="accent">AI Companion Robot</span><br>Deployed in Finnish Care Facilities</h1>
+  <p class="header-summary">How Ilu Space designed, built, and shipped Qluve — a physical AI robot that speaks to elderly residents, supports over 50 languages, and gives caregivers a real-time activity dashboard — across multiple Finnish care organizations.</p>
+  <div class="meta-row">
+    <div class="meta-item">
+      <span class="meta-label">Product</span>
+      <span class="meta-value">Qluve</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Domain</span>
+      <span class="meta-value">Eldercare Robotics</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Geography</span>
+      <span class="meta-value">Finland</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Stack</span>
+      <span class="meta-value">Hardware · Embedded AI · Full-Stack</span>
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Status</span>
+      <span class="meta-value">Deployed 2026</span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+  <div class="content-body">
+
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-num">3+</span>
+        <span class="stat-desc">Care organizations deployed</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">12+</span>
+        <span class="stat-desc">Residents actively using Qluve</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">50+</span>
+        <span class="stat-desc">Languages supported</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">Full</span>
+        <span class="stat-desc">Stack: hardware to dashboard</span>
+      </div>
+    </div>
+
+    <!-- PROBLEM -->
+    <div class="cs-section">
+      <div class="cs-section-label">01 · Problem</div>
+      <h2>Nordic Care Facilities Face a Loneliness Crisis — at Scale</h2>
+      <p>Finnish eldercare facilities are under structural pressure: rising resident numbers, stretched staff-to-resident ratios, and a growing population of elderly people who spend large parts of their day without meaningful social interaction. Loneliness among care home residents is a documented clinical problem — it accelerates cognitive decline, increases depression, and creates additional burden on care staff who are already at capacity.</p>
+      <p>Existing digital companionship tools were either screen-based (requiring tech literacy and dexterity that many residents don't have) or passive (background music, TV). There was a gap for something that could have a genuine conversation, remember the resident, and report back to carers — in a form that didn't require the resident to learn anything new.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- THE APPROACH -->
+    <div class="cs-section" style="margin-top:48px;">
+      <div class="cs-section-label">02 · The Approach</div>
+      <h2>A Physical Companion That Meets Residents Where They Are</h2>
+      <p>The core design decision was physical presence. A voice-only device (like a smart speaker) lacks the social cues that trigger engagement. A screen-based device requires active operation. Qluve was designed as a compact robot with a physical form — friendly, non-threatening, present in the room — that initiates conversation and responds naturally to voice.</p>
+      <ul>
+        <li>Interaction is entirely voice-driven: no screen to navigate, no buttons to press. Residents simply talk to it.</li>
+        <li>The AI is personalized per resident — it learns preferences, remembers past conversations, and can discuss topics the resident actually cares about (family, history, hobbies).</li>
+        <li>Language is not a barrier: with over 50 languages supported, residents whose first language isn't Finnish (a common reality in care homes serving immigrant populations) can interact in their native tongue.</li>
+        <li>Care staff get a dashboard showing activity data — when residents engaged, for how long, and any notable signals — so caregivers can act on information, not guesses.</li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- THE STACK -->
+    <div class="cs-section" style="margin-top:48px;">
+      <div class="cs-section-label">03 · The Stack</div>
+      <h2>Hardware to Dashboard — End to End</h2>
+      <p>This is the build that demonstrates what "full-stack AI robotics" actually means in practice. Most companies can do the software layer. Ilu Space built every layer.</p>
+      <div class="stack-grid">
+        <div class="stack-card">
+          <div class="stack-card-label">Physical Hardware</div>
+          <p>Custom robot design, 3D-printed enclosures, embedded microcontroller integration. Designed for care home environments: durable, hygienic surfaces, compact footprint.</p>
+        </div>
+        <div class="stack-card">
+          <div class="stack-card-label">Embedded Systems</div>
+          <p>On-device firmware handling microphone input, speaker output, local processing, and network communication. Low-latency response cycle to make conversation feel natural.</p>
+        </div>
+        <div class="stack-card">
+          <div class="stack-card-label">AI Voice Layer</div>
+          <p>Large language model integration with voice synthesis and speech recognition. Multilingual support across 50+ languages. Persona and memory layers for resident personalization.</p>
+        </div>
+        <div class="stack-card">
+          <div class="stack-card-label">Cloud Infrastructure</div>
+          <p>Device management, conversation logging, per-resident data storage, real-time sync with caregiver dashboard. Secure, GDPR-compliant data handling.</p>
+        </div>
+        <div class="stack-card">
+          <div class="stack-card-label">Caregiver Dashboard</div>
+          <p>Web application giving care staff visibility into resident engagement. Activity logs, engagement patterns, configurable alerts. Designed for non-technical users.</p>
+        </div>
+        <div class="stack-card">
+          <div class="stack-card-label">Deployment Pipeline</div>
+          <p>Remote firmware update capability, fleet management for multiple devices across multiple facilities. Zero-downtime updates to AI models and conversation logic.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- WHAT WAS DEPLOYED -->
+    <div class="cs-section" style="margin-top:48px;">
+      <div class="cs-section-label">04 · What Was Deployed</div>
+      <h2>Live Across Finnish Care Facilities</h2>
+      <p>Qluve is deployed and in active use across care facilities operated by ViisSeiska Oy and Kehitysvammatuki 57, including Karhurinteen kotiyhteisö and Myllykaaren kotiyhteisö. These are real care environments, with real residents.</p>
+      <div class="deployed-grid">
+        <div class="deployed-item">
+          <div class="deployed-item-icon">🏠</div>
+          <div class="deployed-item-text">
+            <strong>Karhurinteen kotiyhteisö</strong>
+            ViisSeiska Oy / Kehitysvammatuki 57 — active deployment
+          </div>
+        </div>
+        <div class="deployed-item">
+          <div class="deployed-item-icon">🏠</div>
+          <div class="deployed-item-text">
+            <strong>Myllykaaren kotiyhteisö</strong>
+            ViisSeiska Oy / Kehitysvammatuki 57 — active deployment
+          </div>
+        </div>
+        <div class="deployed-item">
+          <div class="deployed-item-icon">🤖</div>
+          <div class="deployed-item-text">
+            <strong>Physical robots in rooms</strong>
+            Not a pilot. Not a proof of concept. Residents use them daily.
+          </div>
+        </div>
+        <div class="deployed-item">
+          <div class="deployed-item-icon">📊</div>
+          <div class="deployed-item-text">
+            <strong>Caregiver dashboard live</strong>
+            Staff accessing activity data across 12+ residents
+          </div>
+        </div>
+        <div class="deployed-item">
+          <div class="deployed-item-icon">🌍</div>
+          <div class="deployed-item-text">
+            <strong>Multilingual conversations</strong>
+            50+ languages — serving residents whose first language isn't Finnish
+          </div>
+        </div>
+        <div class="deployed-item">
+          <div class="deployed-item-icon">🔄</div>
+          <div class="deployed-item-text">
+            <strong>Remote fleet management</strong>
+            AI model updates deployed to all devices without physical access
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- WHAT WE LEARNED -->
+    <div class="cs-section" style="margin-top:48px;">
+      <div class="cs-section-label">05 · What We Learned</div>
+      <h2>What Actually Matters When AI Meets Care</h2>
+      <div class="insight-list">
+        <div class="insight-item">
+          <h4>Physical presence changes the interaction completely</h4>
+          <p>Residents who wouldn't engage with a voice assistant on a tablet engaged readily with a robot in the room. The physical form isn't decoration — it's the thing that makes the interaction feel social rather than transactional.</p>
+        </div>
+        <div class="insight-item">
+          <h4>Language support is equity, not a feature</h4>
+          <p>A meaningful portion of care home residents in Finland have non-Finnish first languages. Building 50+ language support wasn't scope creep — it was the difference between a product that works for everyone and one that works for most people.</p>
+        </div>
+        <div class="insight-item">
+          <h4>Staff adoption matters as much as resident adoption</h4>
+          <p>The caregiver dashboard wasn't an afterthought — it was what enabled care staff to trust the system. When carers can see what happened and act on the data, they become advocates rather than skeptics. AI that generates data no one sees is AI that gets switched off.</p>
+        </div>
+        <div class="insight-item">
+          <h4>The deployment complexity is where most AI products fail</h4>
+          <p>Getting AI to work on a device in a care facility — with reliable networking, over-the-air updates, regulatory-compliant data handling, and staff who aren't developers — is harder than the AI itself. The full-stack build was the product.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- WHAT THIS DEMONSTRATES -->
+    <div class="cs-section" style="margin-top:48px;">
+      <div class="cs-section-label">06 · What This Demonstrates</div>
+      <h2>Capabilities This Build Proves</h2>
+      <div class="insight-list">
+        <div class="insight-item">
+          <h4>Hardware + software + AI as a single build</h4>
+          <p>Most studios can pick one or two of these. Qluve required all three simultaneously — custom hardware, embedded firmware, cloud infrastructure, AI model integration, and a web dashboard — all built and shipped by Ilu Space.</p>
+        </div>
+        <div class="insight-item">
+          <h4>Deployed in a regulated, high-stakes environment</h4>
+          <p>Care facilities aren't forgiving environments for technology failures. Data privacy, device reliability, and staff trust all have to be right. Shipping in this context is a meaningful signal about production-readiness.</p>
+        </div>
+        <div class="insight-item">
+          <h4>Nordic healthcare market knowledge</h4>
+          <p>Understanding how Finnish care organizations procure, how care staff workflows actually operate, and what residents genuinely need from technology — this is domain knowledge that can't be Googled. It comes from building something real in the space.</p>
+        </div>
+        <div class="insight-item">
+          <h4>Technical range that covers the full product</h4>
+          <p>If you're building a product that needs to live in the physical world — with AI, connectivity, a user interface, and real operational constraints — this build is evidence that Ilu Space can cover the whole thing. Not just the software layer. Not just a demo.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cs-cta">
+      <h3>Building Something Similar?</h3>
+      <p>If you're working on AI for healthcare, eldercare, or any product that needs to span hardware and software — let's talk. Ilu Space operates as a technical co-founder on demand.</p>
+      <a href="/#contact" class="btn-primary">Book a Discovery Call →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-logo">Ilu<span>Space</span></a>
+  <div class="footer-meta">
+    © <span class="year"></span> Ilu Space. Helsinki, Finland.<br>
+    <a href="mailto:ilu-space@madmantra.app">ilu-space@madmantra.app</a>
+  </div>
+  <div class="footer-right">
+    Powered by <a href="https://madmantra.com" target="_blank" rel="noopener">MadMantra</a>
+  </div>
+</footer>
+
+<script>document.querySelectorAll('.year').forEach(function(e){e.textContent=new Date().getFullYear();});</script>
+</body>
+</html>
