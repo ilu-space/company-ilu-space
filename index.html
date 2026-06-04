@@ -871,6 +871,303 @@
     opacity: 1;
     transform: none;
   }
+
+  /* ══════════════════════════════════════════
+     SCOPE ESTIMATOR WIDGET
+  ══════════════════════════════════════════ */
+  .estimator-bg {
+    background: var(--bg3);
+  }
+
+  .estimator-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* Progress bar */
+  .est-progress-bar {
+    height: 3px;
+    background: rgba(59,130,246,0.15);
+    border-radius: 2px;
+    margin-bottom: 36px;
+    overflow: hidden;
+  }
+
+  .est-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue-dark), var(--blue));
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+
+  /* Step wrapper */
+  .est-step {
+    display: none;
+  }
+
+  .est-step.active {
+    display: block;
+    animation: fadeSlideIn 0.35s ease;
+  }
+
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .est-step-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+  }
+
+  .est-question {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 3vw, 1.75rem);
+    color: #fff;
+    margin-bottom: 28px;
+    line-height: 1.35;
+  }
+
+  /* Option cards */
+  .est-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+  }
+
+  .est-option {
+    background: rgba(255,255,255,0.03);
+    border: 1.5px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 16px 18px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .est-option:hover {
+    border-color: rgba(59,130,246,0.5);
+    background: rgba(59,130,246,0.07);
+    transform: translateY(-2px);
+  }
+
+  .est-option.selected {
+    border-color: var(--blue);
+    background: rgba(59,130,246,0.14);
+  }
+
+  .est-option-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .est-option-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #fff;
+  }
+
+  .est-option-hint {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  /* Nav buttons */
+  .est-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 28px;
+    gap: 12px;
+  }
+
+  .est-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 11px 26px;
+    border-radius: 9px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    transition: background 0.2s, transform 0.15s, opacity 0.2s;
+  }
+
+  .est-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+
+  .est-btn-back {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    color: var(--text-muted);
+  }
+
+  .est-btn-back:not(:disabled):hover {
+    border-color: rgba(255,255,255,0.3);
+    color: var(--text);
+  }
+
+  .est-btn-next {
+    background: var(--blue);
+    color: #fff;
+    margin-left: auto;
+  }
+
+  .est-btn-next:not(:disabled):hover {
+    background: var(--blue-dark);
+    transform: translateY(-2px);
+  }
+
+  /* Step counter */
+  .est-step-counter {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ── Result card ── */
+  .est-result {
+    display: none;
+    animation: fadeSlideIn 0.4s ease;
+  }
+
+  .est-result.active {
+    display: block;
+  }
+
+  .est-result-card {
+    background: linear-gradient(135deg, rgba(29,78,216,0.18) 0%, rgba(59,130,246,0.08) 100%);
+    border: 1.5px solid rgba(59,130,246,0.4);
+    border-radius: 16px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .est-result-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue-dark), var(--blue), var(--blue-light));
+  }
+
+  .est-result-tier {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(59,130,246,0.18);
+    border: 1px solid rgba(59,130,246,0.35);
+    color: var(--blue-light);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 18px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .est-result-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.25;
+  }
+
+  .est-result-timeline {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--blue-light);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 18px;
+  }
+
+  .est-result-timeline::before { content: '⏱'; font-size: 1rem; }
+
+  .est-result-rationale {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .est-result-bullets {
+    list-style: none;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .est-result-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text);
+  }
+
+  .est-result-bullets li::before {
+    content: '✓';
+    color: var(--blue);
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .est-result-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .est-reset-btn {
+    background: transparent;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    color: var(--text-muted);
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .est-reset-btn:hover {
+    border-color: rgba(255,255,255,0.25);
+    color: var(--text);
+  }
+
+  /* Responsive */
+  @media (max-width: 560px) {
+    .est-options { grid-template-columns: 1fr 1fr; }
+    .est-result-card { padding: 24px 18px; }
+    .est-result-actions { flex-direction: column; }
+  }
+
+  @media (max-width: 380px) {
+    .est-options { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -946,6 +1243,212 @@
       <p>Built and shipped enterprise carbon tracking and ESG reporting platforms. Understands the regulatory landscape and can build compliance-ready sustainability software.</p>
     </div>
   </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════
+     AI PROJECT SCOPE ESTIMATOR
+════════════════════════════════════ -->
+<section id="scope-estimator" class="estimator-bg">
+  <div class="section-header reveal">
+    <span class="section-label">Instant Scope Estimate</span>
+    <h2 class="section-title">What Kind of Engagement Do You Need?</h2>
+    <p class="section-desc">Answer 5 quick questions and get an instant rough scope — the right Ilu Space service tier, typical timeline, and what's included. Takes 60 seconds.</p>
+  </div>
+
+  <div class="estimator-wrap reveal">
+
+    <!-- Progress -->
+    <div class="est-progress-bar">
+      <div class="est-progress-fill" id="estProgressFill" style="width:20%"></div>
+    </div>
+
+    <!-- ── Step 1: Industry ── -->
+    <div class="est-step active" id="estStep1">
+      <div class="est-step-label">Step 1 of 5</div>
+      <div class="est-question">What industry or domain are you in?</div>
+      <div class="est-options">
+        <button class="est-option" data-q="industry" data-val="health">
+          <span class="est-option-icon">🏥</span>
+          <span class="est-option-label">Healthcare &amp; Eldercare</span>
+          <span class="est-option-hint">Hospitals, care homes, health tech</span>
+        </button>
+        <button class="est-option" data-q="industry" data-val="climate">
+          <span class="est-option-icon">🌱</span>
+          <span class="est-option-label">Climate &amp; ESG</span>
+          <span class="est-option-hint">Sustainability, carbon tracking, compliance</span>
+        </button>
+        <button class="est-option" data-q="industry" data-val="manufacturing">
+          <span class="est-option-icon">🏭</span>
+          <span class="est-option-label">Manufacturing &amp; Industry</span>
+          <span class="est-option-hint">Factory, logistics, supply chain, energy</span>
+        </button>
+        <button class="est-option" data-q="industry" data-val="saas">
+          <span class="est-option-icon">📊</span>
+          <span class="est-option-label">SaaS &amp; Enterprise Software</span>
+          <span class="est-option-hint">B2B platforms, workflows, automation</span>
+        </button>
+        <button class="est-option" data-q="industry" data-val="other">
+          <span class="est-option-icon">🔭</span>
+          <span class="est-option-label">Other / Exploring</span>
+          <span class="est-option-hint">Early stage or cross-sector</span>
+        </button>
+      </div>
+      <div class="est-nav">
+        <span class="est-step-counter">1 / 5</span>
+        <button class="est-btn est-btn-next" id="estNext1" disabled>Next →</button>
+      </div>
+    </div>
+
+    <!-- ── Step 2: Project type ── -->
+    <div class="est-step" id="estStep2">
+      <div class="est-step-label">Step 2 of 5</div>
+      <div class="est-question">What type of project are you looking to do?</div>
+      <div class="est-options">
+        <button class="est-option" data-q="type" data-val="integrate">
+          <span class="est-option-icon">⚡</span>
+          <span class="est-option-label">Integrate AI into existing product</span>
+          <span class="est-option-hint">Add AI features, automation, or agents to something that already exists</span>
+        </button>
+        <button class="est-option" data-q="type" data-val="newproduct">
+          <span class="est-option-icon">🛠️</span>
+          <span class="est-option-label">Build a new AI product</span>
+          <span class="est-option-hint">Greenfield build — from concept to deployed product</span>
+        </button>
+        <button class="est-option" data-q="type" data-val="hardware">
+          <span class="est-option-icon">🤖</span>
+          <span class="est-option-label">AI + physical hardware</span>
+          <span class="est-option-hint">Robots, embedded devices, edge AI, IoT</span>
+        </button>
+        <button class="est-option" data-q="type" data-val="venture">
+          <span class="est-option-icon">🤝</span>
+          <span class="est-option-label">Co-build a venture</span>
+          <span class="est-option-hint">I have the domain knowledge, need the full technical build</span>
+        </button>
+      </div>
+      <div class="est-nav">
+        <button class="est-btn est-btn-back" id="estBack2">← Back</button>
+        <span class="est-step-counter">2 / 5</span>
+        <button class="est-btn est-btn-next" id="estNext2" disabled>Next →</button>
+      </div>
+    </div>
+
+    <!-- ── Step 3: Timeline ── -->
+    <div class="est-step" id="estStep3">
+      <div class="est-step-label">Step 3 of 5</div>
+      <div class="est-question">What's your ideal timeline to first results?</div>
+      <div class="est-options">
+        <button class="est-option" data-q="timeline" data-val="fast">
+          <span class="est-option-icon">🚀</span>
+          <span class="est-option-label">As fast as possible</span>
+          <span class="est-option-hint">2–4 weeks to working deliverable</span>
+        </button>
+        <button class="est-option" data-q="timeline" data-val="medium">
+          <span class="est-option-icon">📅</span>
+          <span class="est-option-label">1–3 months</span>
+          <span class="est-option-hint">Structured build with room to iterate</span>
+        </button>
+        <button class="est-option" data-q="timeline" data-val="long">
+          <span class="est-option-icon">🗓️</span>
+          <span class="est-option-label">3–6+ months</span>
+          <span class="est-option-hint">Longer-horizon product or venture build</span>
+        </button>
+        <button class="est-option" data-q="timeline" data-val="flexible">
+          <span class="est-option-icon">🔄</span>
+          <span class="est-option-label">Flexible / Not sure yet</span>
+          <span class="est-option-hint">Still scoping, timeline is open</span>
+        </button>
+      </div>
+      <div class="est-nav">
+        <button class="est-btn est-btn-back" id="estBack3">← Back</button>
+        <span class="est-step-counter">3 / 5</span>
+        <button class="est-btn est-btn-next" id="estNext3" disabled>Next →</button>
+      </div>
+    </div>
+
+    <!-- ── Step 4: Team ── -->
+    <div class="est-step" id="estStep4">
+      <div class="est-step-label">Step 4 of 5</div>
+      <div class="est-question">What does your current technical team look like?</div>
+      <div class="est-options">
+        <button class="est-option" data-q="team" data-val="none">
+          <span class="est-option-icon">👤</span>
+          <span class="est-option-label">No technical team</span>
+          <span class="est-option-hint">I'm the founder / non-technical, need full build ownership</span>
+        </button>
+        <button class="est-option" data-q="team" data-val="small">
+          <span class="est-option-icon">👥</span>
+          <span class="est-option-label">Small team (1–3 devs)</span>
+          <span class="est-option-hint">Existing team but missing AI or full-stack depth</span>
+        </button>
+        <button class="est-option" data-q="team" data-val="medium">
+          <span class="est-option-icon">🏢</span>
+          <span class="est-option-label">Established engineering team</span>
+          <span class="est-option-hint">Need specialist AI expertise alongside internal team</span>
+        </button>
+        <button class="est-option" data-q="team" data-val="cofounder">
+          <span class="est-option-icon">💡</span>
+          <span class="est-option-label">Domain expert, no tech team</span>
+          <span class="est-option-hint">Deep industry knowledge, looking for a technical co-builder</span>
+        </button>
+      </div>
+      <div class="est-nav">
+        <button class="est-btn est-btn-back" id="estBack4">← Back</button>
+        <span class="est-step-counter">4 / 5</span>
+        <button class="est-btn est-btn-next" id="estNext4" disabled>Next →</button>
+      </div>
+    </div>
+
+    <!-- ── Step 5: Goal ── -->
+    <div class="est-step" id="estStep5">
+      <div class="est-step-label">Step 5 of 5</div>
+      <div class="est-question">What does success look like at the end?</div>
+      <div class="est-options">
+        <button class="est-option" data-q="goal" data-val="shipped">
+          <span class="est-option-icon">🚢</span>
+          <span class="est-option-label">Working software in production</span>
+          <span class="est-option-hint">Live, deployed, real users — not a demo</span>
+        </button>
+        <button class="est-option" data-q="goal" data-val="pilot">
+          <span class="est-option-icon">🧪</span>
+          <span class="est-option-label">Validated pilot or PoC</span>
+          <span class="est-option-hint">Prove the concept works before full investment</span>
+        </button>
+        <button class="est-option" data-q="goal" data-val="venture">
+          <span class="est-option-icon">📈</span>
+          <span class="est-option-label">Fundable / launchable venture</span>
+          <span class="est-option-hint">Product + traction that enables next stage of growth</span>
+        </button>
+        <button class="est-option" data-q="goal" data-val="cofounder">
+          <span class="est-option-icon">🤝</span>
+          <span class="est-option-label">Long-term technical partnership</span>
+          <span class="est-option-hint">Ongoing technical co-founder relationship</span>
+        </button>
+      </div>
+      <div class="est-nav">
+        <button class="est-btn est-btn-back" id="estBack5">← Back</button>
+        <span class="est-step-counter">5 / 5</span>
+        <button class="est-btn est-btn-next" id="estNext5" disabled>Get My Estimate →</button>
+      </div>
+    </div>
+
+    <!-- ── Result ── -->
+    <div class="est-result" id="estResult">
+      <div class="est-result-card">
+        <div class="est-result-tier" id="estResultTier"></div>
+        <div class="est-result-headline" id="estResultHeadline"></div>
+        <div class="est-result-timeline" id="estResultTimeline"></div>
+        <div class="est-result-rationale" id="estResultRationale"></div>
+        <ul class="est-result-bullets" id="estResultBullets"></ul>
+        <div class="est-result-actions">
+          <a href="#contact" class="btn-primary" style="font-size:0.95rem;padding:12px 28px;">Book a Discovery Call →</a>
+          <button class="est-reset-btn" id="estResetBtn">↺ Start Over</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /estimator-wrap -->
 </section>
 
 <div class="divider"></div>
@@ -1254,6 +1757,264 @@
       }, 100);
     }
   }
+</script>
+
+<!-- ════════════════════════════════════════
+     SCOPE ESTIMATOR LOGIC
+════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ── State ──────────────────────────────────────────────
+  var answers = { industry: null, type: null, timeline: null, team: null, goal: null };
+  var currentStep = 1;
+  var TOTAL_STEPS = 5;
+
+  // ── Outcome table ──────────────────────────────────────
+  // Priority: type > timeline > team > goal (industry adds colour to rationale)
+  // Returns { tier, headline, timeline, rationale, bullets }
+  function computeResult(a) {
+    // Alias for brevity
+    var type     = a.type;
+    var timeline = a.timeline;
+    var team     = a.team;
+    var goal     = a.goal;
+    var industry = a.industry;
+
+    // ── Co-Built Venture ──
+    if (type === 'venture' || goal === 'venture' || (team === 'cofounder' && goal !== 'pilot')) {
+      return {
+        tier:      '🤝 Co-Built Venture',
+        headline:  'This sounds like a Co-Built Venture',
+        timeline:  '3–6+ months to launchable product',
+        rationale: 'You have deep domain expertise and a real problem worth solving — but the full technical build needs to come from outside. Co-Built Ventures are Ilu Space\'s most intensive engagement type: we take on the complete technical build with shared upside, designed for founders who are ready to go from domain insight to live product.',
+        bullets: [
+          'Full technical ownership — design, build, deploy',
+          'Structured around shared economics, not a day rate',
+          'Ideal for ' + industryPhrase(industry) + ' founders with a clear problem hypothesis',
+          'Engagement starts with a scoping conversation about fit and structure'
+        ]
+      };
+    }
+
+    // ── Robotics / Hardware build ──
+    if (type === 'hardware') {
+      var hw_timeline = (timeline === 'fast') ? '6–10 weeks for first working prototype' : '3–5 months to deployed hardware product';
+      return {
+        tier:      '🤖 Full-Stack AI Robotics Build',
+        headline:  'This sounds like a Full-Stack AI Robotics Build',
+        timeline:  hw_timeline,
+        rationale: 'You\'re building something that needs to live in the physical world. This is one of Ilu Space\'s rarest capabilities — spanning embedded firmware, hardware design, 3D-printed enclosures, edge AI inference, and cloud infrastructure. Very few studios can own this end-to-end.',
+        bullets: [
+          'Hardware design + 3D enclosure prototyping',
+          'Embedded firmware and edge AI integration',
+          'Cloud backend + caregiver/operator dashboard',
+          'Prior art: Qluve eldercare companion robot deployed in Finnish care facilities'
+        ]
+      };
+    }
+
+    // ── AI Integration Sprint ──
+    if (type === 'integrate' && (timeline === 'fast' || timeline === 'medium')) {
+      return {
+        tier:      '⚡ AI Integration Sprint',
+        headline:  'This sounds like a 2–4 Week AI Integration Sprint',
+        timeline:  '2–4 weeks to working, deployed integration',
+        rationale: 'You have a working product and want AI inside it — automation, smarter workflows, agents, better data. Sprints are Ilu Space\'s most structured offering: a focused build with a defined scope, delivered fast. No endless discovery. Working software at the end.',
+        bullets: [
+          'Week 1: diagnostic — identify highest-leverage AI opportunity in your stack',
+          'Weeks 2–4: build and integrate, with weekly check-ins',
+          'Delivered as working code in your environment, not a demo',
+          'Common outputs: AI agents, LLM pipelines, automation, smart data features'
+        ]
+      };
+    }
+
+    // ── New product build (medium timeline) ──
+    if (type === 'newproduct' && (timeline === 'medium' || timeline === 'fast')) {
+      return {
+        tier:      '🛠️ AI Product Build — Technical Co-Founder',
+        headline:  'This sounds like a 6–10 Week AI Product Build',
+        timeline:  '6–10 weeks to first production-ready version',
+        rationale: 'You\'re building a new AI product from scratch and need someone who can own the full technical build — not just code to a spec. The Technical Co-Founder model means Ilu Space shapes the architecture, makes the technology decisions, and ships working software in your stack.',
+        bullets: [
+          'Full product architecture and technology decision ownership',
+          'Weekly working software — not slide decks or status reports',
+          'Stack spans AI/ML, full-stack web, APIs, and infrastructure as needed',
+          'Transition to ongoing support or continued co-founder engagement post-launch'
+        ]
+      };
+    }
+
+    // ── New product build (long / flexible) ──
+    if (type === 'newproduct' && (timeline === 'long' || timeline === 'flexible')) {
+      return {
+        tier:      '🛠️ Technical Co-Founder Engagement',
+        headline:  'This sounds like a Long-Form Technical Co-Founder Engagement',
+        timeline:  '3–6 months to production launch + ongoing',
+        rationale: 'You\'re building something with real scope — not a sprint project. The Technical Co-Founder on Demand model is designed for this: a senior technical partner who works alongside you from architecture to deployment to growth iteration. Structured as a monthly retainer with clear milestones.',
+        bullets: [
+          'Ongoing technical co-founder role with monthly retainer structure',
+          'Covers strategy, architecture, build, and deployment',
+          'Best fit for ' + industryPhrase(industry) + ' product with 3–6+ month roadmap',
+          'Starts with a scoping call to validate fit and define the engagement shape'
+        ]
+      };
+    }
+
+    // ── Pilot / PoC ──
+    if (goal === 'pilot' || (type === 'integrate' && timeline === 'fast')) {
+      return {
+        tier:      '🧪 Focused AI Pilot',
+        headline:  'This sounds like a Focused AI Pilot (2–3 Weeks)',
+        timeline:  '2–3 weeks to working proof of concept',
+        rationale: 'You want to validate that AI can actually solve the problem before committing to a full build. Ilu Space can scope a tightly bounded pilot — enough to get real evidence, not a polished demo — and then decide together whether to proceed to a full integration sprint or product build.',
+        bullets: [
+          'Bounded scope: one workflow, one clear hypothesis to test',
+          'Delivered as runnable code, not a slide deck',
+          'Option to extend directly into a full AI Integration Sprint',
+          'Ideal for ' + industryPhrase(industry) + ' teams that need internal buy-in before committing'
+        ]
+      };
+    }
+
+    // ── Long-term partnership / integration ──
+    if (goal === 'cofounder' || (team === 'medium' && timeline === 'long')) {
+      return {
+        tier:      '🤝 Technical Co-Founder on Demand',
+        headline:  'This sounds like an Ongoing Technical Co-Founder Engagement',
+        timeline:  'Ongoing monthly retainer — starts within 2 weeks',
+        rationale: 'You have an established team but need senior AI technical leadership on an ongoing basis — someone who works alongside your engineers, shapes the AI roadmap, and takes ownership of the hard technical decisions. This is the Technical Co-Founder on Demand model, structured as a retainer.',
+        bullets: [
+          'Monthly retainer with milestone-based structure',
+          'Embeds alongside your existing engineering team',
+          'Owns AI/ML strategy, architecture decisions, and delivery',
+          'Particularly relevant for ' + industryPhrase(industry) + ' companies scaling AI products'
+        ]
+      };
+    }
+
+    // ── Default / fallback ──
+    return {
+      tier:      '⚡ AI Integration Sprint',
+      headline:  'This sounds like a 4–6 Week AI Integration Sprint',
+      timeline:  '4–6 weeks to working, deployed solution',
+      rationale: 'Based on your inputs, the most direct path forward is a structured AI Integration Sprint — a defined-scope engagement that moves fast, delivers working software, and can evolve into a longer engagement if the fit is right.',
+      bullets: [
+        'Scoped diagnostic to identify the highest-value AI opportunity',
+        'Build and integrate within a fixed timeframe',
+        'Working code delivered — not prototypes or slide decks',
+        'Designed for ' + industryPhrase(industry) + ' teams who want to move quickly'
+      ]
+    };
+  }
+
+  function industryPhrase(industry) {
+    var phrases = {
+      health:        'healthcare & eldercare',
+      climate:       'climate & ESG',
+      manufacturing: 'manufacturing & industrial',
+      saas:          'B2B SaaS',
+      other:         'your'
+    };
+    return phrases[industry] || 'your';
+  }
+
+  // ── DOM helpers ──────────────────────────────────────────
+  function showStep(n) {
+    // Hide all steps + result
+    for (var i = 1; i <= TOTAL_STEPS; i++) {
+      var el = document.getElementById('estStep' + i);
+      if (el) { el.classList.remove('active'); }
+    }
+    document.getElementById('estResult').classList.remove('active');
+
+    if (n <= TOTAL_STEPS) {
+      document.getElementById('estStep' + n).classList.add('active');
+    } else {
+      showResult();
+    }
+
+    // Update progress bar
+    var pct = Math.round((n / (TOTAL_STEPS + 1)) * 100);
+    document.getElementById('estProgressFill').style.width = pct + '%';
+    currentStep = n;
+  }
+
+  function showResult() {
+    var result = computeResult(answers);
+
+    document.getElementById('estProgressFill').style.width = '100%';
+    document.getElementById('estResultTier').textContent     = result.tier;
+    document.getElementById('estResultHeadline').textContent = result.headline;
+    document.getElementById('estResultTimeline').textContent = result.timeline;
+    document.getElementById('estResultRationale').textContent = result.rationale;
+
+    var bulletsEl = document.getElementById('estResultBullets');
+    bulletsEl.innerHTML = '';
+    result.bullets.forEach(function(b) {
+      var li = document.createElement('li');
+      li.textContent = b;
+      bulletsEl.appendChild(li);
+    });
+
+    document.getElementById('estResult').classList.add('active');
+  }
+
+  function reset() {
+    answers = { industry: null, type: null, timeline: null, team: null, goal: null };
+    // Deselect all option buttons
+    document.querySelectorAll('.est-option').forEach(function(btn) {
+      btn.classList.remove('selected');
+    });
+    // Disable all next buttons
+    ['estNext1','estNext2','estNext3','estNext4','estNext5'].forEach(function(id) {
+      var el = document.getElementById(id);
+      if (el) el.disabled = true;
+    });
+    showStep(1);
+  }
+
+  // ── Option click handler ─────────────────────────────────
+  document.querySelectorAll('.est-option').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var q   = this.getAttribute('data-q');
+      var val = this.getAttribute('data-val');
+
+      // Deselect siblings
+      var siblings = this.closest('.est-options').querySelectorAll('.est-option');
+      siblings.forEach(function(s) { s.classList.remove('selected'); });
+      this.classList.add('selected');
+
+      answers[q] = val;
+
+      // Enable the Next button for this step
+      var stepMap = { industry: 'estNext1', type: 'estNext2', timeline: 'estNext3', team: 'estNext4', goal: 'estNext5' };
+      var nextId  = stepMap[q];
+      if (nextId) {
+        var nextBtn = document.getElementById(nextId);
+        if (nextBtn) nextBtn.disabled = false;
+      }
+    });
+  });
+
+  // ── Navigation buttons ────────────────────────────────────
+  function bindNav(nextId, backId, nextStep, prevStep) {
+    var nextBtn = document.getElementById(nextId);
+    var backBtn = document.getElementById(backId);
+    if (nextBtn) nextBtn.addEventListener('click', function() { if (!this.disabled) showStep(nextStep); });
+    if (backBtn) backBtn.addEventListener('click', function() { showStep(prevStep); });
+  }
+
+  bindNav('estNext1', null,      2, 1);
+  bindNav('estNext2', 'estBack2', 3, 1);
+  bindNav('estNext3', 'estBack3', 4, 2);
+  bindNav('estNext4', 'estBack4', 5, 3);
+  bindNav('estNext5', 'estBack5', 6, 4);  // step 6 = result
+
+  document.getElementById('estResetBtn').addEventListener('click', reset);
+})();
 </script>
 </body>
 </html>
