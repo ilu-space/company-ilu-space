@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What is an AI Product Studio? | Ilu Space Helsinki</title>
+<meta name="description" content="An AI product studio designs, builds, and ships AI-powered products — not decks or pilots. Learn how Ilu Space differs from consultancies and agencies in Helsinki.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ilu.space/ai-product-studio">
+
+<!-- Social / OG -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ilu-space.madmantra.app/ai-product-studio">
+<meta property="og:title" content="What is an AI Product Studio? | Ilu Space Helsinki">
+<meta property="og:description" content="An AI product studio designs, builds, and ships AI-powered products — not decks or pilots. Learn how Ilu Space differs from consultancies and agencies in Helsinki.">
+<meta property="og:image" content="https://www.madmantra.com/og/landing?name=Ilu%20Space&tagline=AI%20Product%20Studio%20Helsinki&slug=ilu-space">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What is an AI Product Studio? | Ilu Space Helsinki">
+<meta name="twitter:description" content="An AI product studio designs, builds, and ships AI-powered products — not decks or pilots. Learn how Ilu Space differs from consultancies and agencies in Helsinki.">
+<meta name="twitter:image" content="https://www.madmantra.com/og/landing?name=Ilu%20Space&tagline=AI%20Product%20Studio%20Helsinki&slug=ilu-space">
+<meta name="twitter:site" content="@madmantra">
+
+<!-- FAQ Schema Markup (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is an AI product studio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An AI product studio is a company that designs, builds, and ships AI-powered products from idea to deployment. Unlike consultancies that deliver strategy documents or agencies that hand off code, a studio stays accountable for the working product. The defining constraint is shipping: if it doesn't run in production, the work isn't done."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is an AI product studio different from a consultancy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A consultancy sells advice — strategy decks, roadmaps, recommendations. An AI product studio sells execution. The studio doesn't just tell you what to build; it builds it. The output is a live product, not a slide deck. Consultancies typically disengage after delivery; a studio ships and iterates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is an AI product studio different from a software agency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A software agency builds to specification — you tell them what to build, they build it. An AI product studio brings product thinking and AI/ML expertise alongside the engineering. The studio co-defines what to build, why, and how to make the AI component actually work in production — not just in demos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does Ilu Space actually build?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ilu Space builds AI-powered products across industries: climate and CSRD compliance software, eldercare robotics (Qluve — a voice AI companion deployed in Finnish care facilities), AI agents, and full-stack software systems. The work spans hardware, embedded systems, AI/ML pipelines, and web applications."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why Helsinki specifically?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Helsinki has one of the highest concentrations of deep technical talent in Europe — strong engineering universities, ex-Nokia/Supercell founders, and a culture of building things rather than just talking about them. The structural demand is also clear: eldercare (dependency ratio rising), CSRD compliance (mandatory ESG reporting for EU companies), and manufacturing automation. These are real problems that need real AI products, not pilots."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Ilu Space work with clients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ilu Space operates as a technical co-founder on demand. That means embedded ownership — not a vendor relationship. The engagement model is designed for companies that need a senior technical builder who can cover the full stack (AI/ML, backend, frontend, hardware if needed) and take accountability for a shipped product, not just delivered code."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Article Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What is an AI Product Studio?",
+  "description": "An AI product studio designs, builds, and ships AI-powered products — not decks or pilots. Learn how Ilu Space differs from consultancies and agencies in Helsinki.",
+  "author": {
+    "@type": "Organization",
+    "name": "Ilu Space",
+    "url": "https://ilu-space.madmantra.app"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ilu Space",
+    "url": "https://ilu-space.madmantra.app"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ilu.space/ai-product-studio"
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0F1117;
+    --bg2: #161820;
+    --bg3: #1C1F2E;
+    --blue: #3B82F6;
+    --blue-light: #60A5FA;
+    --blue-dark: #1D4ED8;
+    --text: #E8EAF0;
+    --text-muted: #8892A4;
+    --border: rgba(59,130,246,0.18);
+    --card-bg: rgba(28,31,46,0.85);
+    --radius: 14px;
+    --content-width: 760px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+  }
+
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { color: var(--blue-light); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 6vw;
+    background: rgba(15,17,23,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(59,130,246,0.10);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--blue); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-back {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .nav-back:hover { color: var(--blue-light); }
+
+  .nav-cta {
+    background: var(--blue);
+    color: #fff;
+    padding: 9px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-cta:hover { background: var(--blue-dark); color: #fff; }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    padding: 120px 6vw 60px;
+    max-width: calc(var(--content-width) + 12vw);
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .breadcrumb a { color: var(--text-muted); }
+  .breadcrumb a:hover { color: var(--blue-light); }
+  .breadcrumb span { color: rgba(255,255,255,0.2); }
+
+  .page-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(59,130,246,0.3);
+    color: var(--blue-light);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    line-height: 1.15;
+  }
+
+  .page-header h1 .accent { color: var(--blue); }
+
+  .header-summary {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 620px;
+    margin-bottom: 0;
+  }
+
+  /* ── CONTENT ── */
+  .content-wrap {
+    max-width: calc(var(--content-width) + 12vw);
+    margin: 0 auto;
+    padding: 0 6vw 80px;
+  }
+
+  .content-body {
+    max-width: var(--content-width);
+  }
+
+  /* Article section */
+  .art-section {
+    margin: 56px 0;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(59,130,246,0.15);
+    max-width: 60px;
+  }
+
+  .art-section h2 {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
+  }
+
+  .art-section h3 {
+    font-size: 1.15rem;
+    color: #fff;
+    margin: 28px 0 10px;
+  }
+
+  .art-section p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.85;
+    margin-bottom: 16px;
+  }
+
+  .art-section p:last-child { margin-bottom: 0; }
+
+  .art-section ul, .art-section ol {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .art-section ul li, .art-section ol li {
+    color: var(--text-muted);
+    font-size: 0.97rem;
+    line-height: 1.75;
+    padding-left: 24px;
+    position: relative;
+    counter-increment: list-counter;
+  }
+
+  .art-section ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 0.85rem;
+    top: 3px;
+  }
+
+  .art-section ol {
+    counter-reset: list-counter;
+  }
+
+  .art-section ol li::before {
+    content: counter(list-counter) ".";
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 0.85rem;
+    font-weight: 700;
+    top: 1px;
+  }
+
+  /* Highlight callout */
+  .callout {
+    background: rgba(59,130,246,0.07);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 10px 10px 0;
+    padding: 18px 22px;
+    margin: 24px 0;
+  }
+
+  .callout p {
+    color: var(--text) !important;
+    font-size: 1.02rem !important;
+    line-height: 1.7 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Comparison table */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9rem;
+  }
+
+  .compare-table th {
+    background: rgba(59,130,246,0.12);
+    color: var(--blue-light);
+    font-weight: 700;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .compare-table td {
+    padding: 13px 16px;
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+
+  .compare-table tr:last-child td { border-bottom: none; }
+
+  .compare-table td:first-child {
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.92rem;
+    width: 28%;
+  }
+
+  .compare-table tbody tr:hover td {
+    background: rgba(59,130,246,0.04);
+  }
+
+  .compare-table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin: 20px 0;
+  }
+
+  /* Feature grid */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+
+  .feature-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px 20px;
+  }
+
+  .feature-card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .feature-card h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .feature-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 0 !important;
+  }
+
+  /* Examples grid */
+  .examples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+
+  .example-card {
+    background: rgba(59,130,246,0.06);
+    border: 1px solid rgba(59,130,246,0.2);
+    border-radius: 10px;
+    padding: 22px 20px;
+  }
+
+  .example-card h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .example-card p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 0 !important;
+  }
+
+  .example-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--blue-light);
+    background: rgba(59,130,246,0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+
+  /* FAQ section */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 20px 0;
+  }
+
+  .faq-item {
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 22px;
+    cursor: pointer;
+    background: var(--card-bg);
+    transition: background 0.2s;
+    gap: 16px;
+    border: none;
+    width: 100%;
+    text-align: left;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .faq-question:hover { background: rgba(28,31,46,0.95); }
+
+  .faq-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue);
+    font-size: 1.1rem;
+    font-weight: 400;
+    transition: transform 0.25s;
+  }
+
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  .faq-answer {
+    display: none;
+    padding: 0 22px 20px;
+    background: var(--card-bg);
+    color: var(--text-muted);
+    font-size: 0.97rem;
+    line-height: 1.85;
+  }
+
+  .faq-item.open .faq-answer { display: block; }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59,130,246,0.15), transparent);
+    margin: 0;
+  }
+
+  /* CTA block */
+  .art-cta {
+    background: linear-gradient(135deg, var(--bg3) 0%, rgba(29,78,216,0.12) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 44px 40px;
+    margin-top: 60px;
+    text-align: center;
+  }
+
+  .art-cta h3 {
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 14px;
+  }
+
+  .art-cta p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 0 auto 28px;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--blue-dark); color: #fff; transform: translateY(-2px); }
+
+  .btn-secondary {
+    color: var(--blue-light);
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-block;
+    margin-left: 20px;
+  }
+
+  .btn-secondary:hover { color: #fff; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0A0C10;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 40px 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+  }
+
+  .footer-logo span { color: var(--blue); }
+
+  .footer-meta {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .footer-meta a { color: var(--text-muted); }
+  .footer-meta a:hover { color: var(--blue-light); }
+
+  .footer-right {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .footer-right a { color: var(--text-muted); }
+  .footer-right a:hover { color: var(--blue-light); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .feature-grid, .examples-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-meta, .footer-right { text-align: center; }
+    .art-cta { padding: 30px 22px; }
+    .compare-table td:first-child { width: auto; }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 14px 4vw; }
+    .page-header { padding: 100px 4vw 40px; }
+    .content-wrap { padding: 0 4vw 60px; }
+    .nav-back { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Ilu<span>Space</span></a>
+  <div class="nav-right">
+    <a href="/" class="nav-back">← Home</a>
+    <a href="/contact" class="nav-cta">Book a Discovery Call</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Ilu Space</a>
+    <span>/</span>
+    What is an AI Product Studio?
+  </div>
+  <div class="page-label">Explainer · AI Product Studio Helsinki</div>
+  <h1>What Is an <span class="accent">AI Product Studio</span>?</h1>
+  <p class="header-summary">A concept that's becoming important in Helsinki — and still completely unclaimed by the large Nordic consultancies. Here's what it means, why it's different, and why it matters for companies that want to actually ship AI.</p>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+  <div class="content-body">
+
+    <!-- SECTION 1: INTRO -->
+    <div class="art-section">
+      <div class="section-label">01 · The Gap</div>
+      <h2>The Consultancies Aren't Filling This Role</h2>
+      <p>If you go to Futurice's website today, you'll find "digital transformation with measurable outcomes." Reaktor calls itself a "global technology company." Vincit promises to turn "digital into business results." All three are excellent firms. None of them position as an AI product studio — or claim to actually build and own AI-powered products.</p>
+      <p>That's not an accident. Large consultancies are optimized for large engagements — multi-year transformation projects, team augmentation, managed services. They're not set up to move the way a product studio does.</p>
+      <div class="callout">
+        <p>The gap this creates: a company that needs someone to <em>own the build</em> — not just advise on it, not just provide bodies, but actually take accountability for a working AI product — has nowhere obvious to go in Helsinki. That's the gap an AI product studio fills.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 2: DEFINITION -->
+    <div class="art-section">
+      <div class="section-label">02 · Definition</div>
+      <h2>What Is an AI Product Studio? Three Defining Constraints</h2>
+      <p>An AI product studio is a company that designs, builds, and ships AI-powered products. That sentence has three load-bearing words: designs, builds, and ships. Most companies can do one or two. The studio does all three, on the same product, with continuous ownership.</p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-card-icon">🎯</div>
+          <h4>Designs</h4>
+          <p>Product thinking baked in from day one. Not "what can the AI do?" but "what problem needs solving, and what's the simplest AI-powered product that solves it?" Scope is an asset, not just a budget line.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon">⚙️</div>
+          <h4>Builds</h4>
+          <p>Full-stack technical execution. Not just the UI layer or the API wrapper — the actual AI pipeline, the infrastructure, the hardware if needed. The studio covers the whole thing or owns the parts that matter.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-card-icon">🚀</div>
+          <h4>Ships</h4>
+          <p>Production deployment. The product runs in the real world with real users. Demos don't count. Pilots that never graduate don't count. Shipped means it's live, it works, and someone's using it.</p>
+        </div>
+      </div>
+
+      <p>The other defining constraint is <strong>ownership</strong>. A studio doesn't just deliver and disengage. It stays accountable for the product working — not just the code being correct. That's a different relationship than hiring a development shop.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 3: COMPARISON TABLE -->
+    <div class="art-section">
+      <div class="section-label">03 · Comparison</div>
+      <h2>AI Product Studio vs. Consultancy vs. Agency</h2>
+      <p>The differences are structural, not just marketing language.</p>
+
+      <div class="compare-table-wrap">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Dimension</th>
+              <th>Consultancy</th>
+              <th>Software Agency</th>
+              <th>AI Product Studio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primary output</td>
+              <td>Strategy, advice, recommendations</td>
+              <td>Code to specification</td>
+              <td>Shipped, working product</td>
+            </tr>
+            <tr>
+              <td>AI expertise</td>
+              <td>Advisory, vendor selection</td>
+              <td>Implementation-level</td>
+              <td>Deep — product + ML + infra</td>
+            </tr>
+            <tr>
+              <td>Accountability</td>
+              <td>Deliverable delivered</td>
+              <td>Code delivered</td>
+              <td>Product working in production</td>
+            </tr>
+            <tr>
+              <td>Typical engagement</td>
+              <td>Multi-year transformation</td>
+              <td>Project-based delivery</td>
+              <td>Co-founder on demand; iterative</td>
+            </tr>
+            <tr>
+              <td>When to use</td>
+              <td>Strategy clarity, org change</td>
+              <td>Known spec, clear requirements</td>
+              <td>Novel AI product, unclear scope</td>
+            </tr>
+            <tr>
+              <td>What you get</td>
+              <td>Deck, roadmap, report</td>
+              <td>Codebase (yours to maintain)</td>
+              <td>Live product + technical ownership</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The consultancy vs. studio distinction is the sharpest one. Both involve a senior technical relationship. But a consultancy's deliverable is advice; a studio's deliverable is a product. You can't run a consultancy report in production. You can run what a studio ships.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 4: WHY HELSINKI -->
+    <div class="art-section">
+      <div class="section-label">04 · Why Helsinki</div>
+      <h2>Why Helsinki Has One — and Needs One</h2>
+      <p>Helsinki punches well above its size in technical talent density. The concentration of strong engineering universities (Aalto, University of Helsinki), the legacy of Nokia engineering culture, and the Supercell/Rovio generation of founders means there's genuine deep technical capability here that doesn't exist at this density in most comparable-size European cities.</p>
+
+      <p>The demand side is equally specific. Helsinki-area companies face three structural pressures that are creating real demand for AI products — not AI strategy:</p>
+
+      <ul>
+        <li><strong>Eldercare:</strong> Finland's dependency ratio is rising — more elderly residents, fewer working-age people to care for them. This creates a structural need for AI products that can augment care delivery. Real products that ship, not pilots that report.</li>
+        <li><strong>CSRD compliance:</strong> EU mandatory ESG reporting is forcing every mid-to-large company to build or buy climate data infrastructure. Software that wasn't needed three years ago is now legally required. That software needs to be AI-powered to handle the data complexity.</li>
+        <li><strong>Manufacturing automation:</strong> Finnish manufacturing (logistics, process industries, precision engineering) is under automation pressure. AI-driven quality systems, predictive maintenance, and process optimisation are moving from nice-to-have to competitive necessity.</li>
+      </ul>
+
+      <p>These aren't vague trends. They're specific, time-bound forcing functions. The companies facing them don't primarily need a deck — they need a product that ships.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 5: WHAT ILU SPACE BUILDS -->
+    <div class="art-section">
+      <div class="section-label">05 · What Ilu Space Builds</div>
+      <h2>What Ilu Space Actually Builds</h2>
+      <p>The range spans industries, stacks, and form factors. A few concrete examples:</p>
+
+      <div class="examples-grid">
+        <div class="example-card">
+          <div class="example-tag">Deployed · Robotics</div>
+          <h4>Qluve — Eldercare AI Companion Robot</h4>
+          <p>A physical AI robot deployed in Finnish care facilities. Voice-powered, multilingual (50+ languages), with a caregiver dashboard. Spans hardware, embedded systems, AI voice layer, cloud infrastructure, and a web application. Deployed across 3+ care organizations, in active daily use.</p>
+        </div>
+        <div class="example-card">
+          <div class="example-tag">Product · Climate</div>
+          <h4>Climate &amp; CSRD Compliance Software</h4>
+          <p>AI-powered software for ESG reporting and CSRD compliance. Handles the data ingestion, categorisation, and reporting complexity that makes manual CSRD compliance unworkable at scale. Built for companies that need to meet EU reporting obligations.</p>
+        </div>
+        <div class="example-card">
+          <div class="example-tag">Product · Agents</div>
+          <h4>AI Agents for Business Processes</h4>
+          <p>Purpose-built AI agents that automate specific business workflows — not generic chatbots, but agents designed around a specific job to be done, integrated into the company's existing systems, and shipped to production with measurable outcomes.</p>
+        </div>
+        <div class="example-card">
+          <div class="example-tag">Capability · Full-Stack</div>
+          <h4>Full-Stack AI Infrastructure</h4>
+          <p>When a product needs to span hardware, embedded systems, AI/ML pipelines, cloud infrastructure, and user-facing web or mobile applications — all of that is in scope. No handoffs to "the AI team" or "the hardware team." One builder, full range.</p>
+        </div>
+      </div>
+
+      <p>The common thread isn't the industry or the technology. It's the approach: <strong>scope down to the core problem, build the minimal AI product that actually solves it, ship to real users, iterate</strong>. The Qluve robot and a CSRD compliance tool look very different; the build philosophy is identical.</p>
+      <p>You can see the Qluve build in more detail in the <a href="/work/qluve-eldercare-robotics">Qluve case study →</a></p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 6: FAQ -->
+    <div class="art-section">
+      <div class="section-label">06 · FAQ</div>
+      <h2>Frequently Asked Questions</h2>
+      <p>Questions that come up when companies are evaluating whether this model fits what they're trying to do.</p>
+
+      <div class="faq-list">
+
+        <div class="faq-item open">
+          <button class="faq-question" aria-expanded="true">
+            What is an AI product studio?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            An AI product studio is a company that designs, builds, and ships AI-powered products from idea to deployment. Unlike consultancies that deliver strategy documents or agencies that hand off code, a studio stays accountable for the working product. The defining constraint is shipping: if it doesn't run in production, the work isn't done.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How is an AI product studio different from a consultancy?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            A consultancy sells advice — strategy decks, roadmaps, recommendations. An AI product studio sells execution. The studio doesn't just tell you what to build; it builds it. The output is a live product, not a slide deck. Consultancies typically disengage after delivery; a studio ships and iterates.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How is an AI product studio different from a software agency?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            A software agency builds to specification — you tell them what to build, they build it. An AI product studio brings product thinking and AI/ML expertise alongside the engineering. The studio co-defines what to build, why, and how to make the AI component actually work in production — not just in demos.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What does Ilu Space actually build?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Ilu Space builds AI-powered products across industries: climate and CSRD compliance software, eldercare robotics (Qluve — a voice AI companion deployed in Finnish care facilities), AI agents, and full-stack software systems. The work spans hardware, embedded systems, AI/ML pipelines, and web applications.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Why Helsinki specifically?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Helsinki has one of the highest concentrations of deep technical talent in Europe — strong engineering universities, ex-Nokia/Supercell founders, and a culture of building things rather than just talking about them. The structural demand is also clear: eldercare (dependency ratio rising), CSRD compliance (mandatory ESG reporting for EU companies), and manufacturing automation. These are real problems that need real AI products, not pilots.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How does Ilu Space work with clients?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            Ilu Space operates as a technical co-founder on demand. That means embedded ownership — not a vendor relationship. The engagement model is designed for companies that need a senior technical builder who can cover the full stack (AI/ML, backend, frontend, hardware if needed) and take accountability for a shipped product, not just delivered code.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="art-cta">
+      <h3>Building an AI Product?</h3>
+      <p>If you're trying to ship an AI-powered product — not run a pilot, not get a roadmap, but actually ship — let's talk. Ilu Space operates as a technical co-founder on demand for companies that need the whole thing built.</p>
+      <a href="/contact" class="btn-primary">Book a Discovery Call →</a>
+      <a href="/work/qluve-eldercare-robotics" class="btn-secondary">See what we've shipped →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-logo">Ilu<span>Space</span></a>
+  <div class="footer-meta">
+    © <span class="year"></span> Ilu Space. Helsinki, Finland.<br>
+    <a href="mailto:ilu-space@madmantra.app">ilu-space@madmantra.app</a>
+  </div>
+  <div class="footer-right">
+    Powered by <a href="https://madmantra.com" target="_blank" rel="noopener">MadMantra</a>
+  </div>
+</footer>
+
+<script>
+// Year
+document.querySelectorAll('.year').forEach(function(e){ e.textContent = new Date().getFullYear(); });
+
+// FAQ accordion
+document.querySelectorAll('.faq-question').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var item = btn.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(function(i){
+      i.classList.remove('open');
+      i.querySelector('.faq-question').setAttribute('aria-expanded','false');
+    });
+    // Open clicked if it was closed
+    if(!isOpen){
+      item.classList.add('open');
+      btn.setAttribute('aria-expanded','true');
+    }
+  });
+});
+</script>
+</body>
+</html>
