@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Nordic Companies Get Wrong Hiring AI Vendors | Ilu Space</title>
+<meta name="description" content="Nordic CTOs and heads of innovation keep making the same vendor selection mistakes. Here's the structural problem — and a better model for getting AI actually shipped.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ilu-space.madmantra.app/blog/nordic-ai-vendor-selection-mistakes">
+
+<!-- Social / OG -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ilu-space.madmantra.app/blog/nordic-ai-vendor-selection-mistakes">
+<meta property="og:title" content="What Nordic Companies Get Wrong Hiring AI Vendors">
+<meta property="og:description" content="Nordic CTOs and heads of innovation keep making the same vendor selection mistakes. Here's the structural problem — and a better model for getting AI actually shipped.">
+<meta property="og:image" content="https://www.madmantra.com/og/landing?name=Ilu%20Space&tagline=AI%20Product%20Studio%20Helsinki&slug=ilu-space">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What Nordic Companies Get Wrong Hiring AI Vendors">
+<meta name="twitter:description" content="Nordic CTOs and heads of innovation keep making the same vendor selection mistakes. Here's the structural problem — and a better model for getting AI actually shipped.">
+<meta name="twitter:image" content="https://www.madmantra.com/og/landing?name=Ilu%20Space&tagline=AI%20Product%20Studio%20Helsinki&slug=ilu-space">
+<meta name="twitter:site" content="@madmantra">
+
+<!-- Article Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "What Nordic Companies Get Wrong When Hiring AI Vendors",
+  "description": "Nordic CTOs and heads of innovation keep making the same vendor selection mistakes. Here's the structural problem — and a better model for getting AI actually shipped.",
+  "author": {
+    "@type": "Organization",
+    "name": "Ilu Space",
+    "url": "https://ilu-space.madmantra.app"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ilu Space",
+    "url": "https://ilu-space.madmantra.app"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ilu-space.madmantra.app/blog/nordic-ai-vendor-selection-mistakes"
+  },
+  "keywords": "AI vendor selection, Nordic companies, AI procurement, AI pilots fail, technical co-founder Finland, AI product studio Helsinki"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0F1117;
+    --bg2: #161820;
+    --bg3: #1C1F2E;
+    --blue: #3B82F6;
+    --blue-light: #60A5FA;
+    --blue-dark: #1D4ED8;
+    --text: #E8EAF0;
+    --text-muted: #8892A4;
+    --border: rgba(59,130,246,0.18);
+    --card-bg: rgba(28,31,46,0.85);
+    --radius: 14px;
+    --content-width: 760px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+  }
+
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { color: var(--blue-light); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 6vw;
+    background: rgba(15,17,23,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(59,130,246,0.10);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--blue); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-back {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .nav-back:hover { color: var(--blue-light); }
+
+  .nav-cta {
+    background: var(--blue);
+    color: #fff;
+    padding: 9px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-cta:hover { background: var(--blue-dark); color: #fff; }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    padding: 120px 6vw 60px;
+    max-width: calc(var(--content-width) + 12vw);
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a { color: var(--text-muted); }
+  .breadcrumb a:hover { color: var(--blue-light); }
+  .breadcrumb span { color: rgba(255,255,255,0.2); }
+
+  .page-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(59,130,246,0.3);
+    color: var(--blue-light);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .page-header h1 {
+    font-size: clamp(1.9rem, 4.5vw, 3rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    line-height: 1.15;
+  }
+
+  .page-header h1 .accent { color: var(--blue); }
+
+  .header-summary {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 620px;
+    margin-bottom: 0;
+  }
+
+  /* Reading time / meta */
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .post-meta-item {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .post-meta-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    opacity: 0.4;
+  }
+
+  /* ── CONTENT ── */
+  .content-wrap {
+    max-width: calc(var(--content-width) + 12vw);
+    margin: 0 auto;
+    padding: 0 6vw 80px;
+  }
+
+  .content-body {
+    max-width: var(--content-width);
+  }
+
+  /* Article section */
+  .art-section {
+    margin: 52px 0;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(59,130,246,0.15);
+    max-width: 60px;
+  }
+
+  .art-section h2 {
+    font-size: clamp(1.3rem, 2.8vw, 1.85rem);
+    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
+  }
+
+  .art-section p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.9;
+    margin-bottom: 18px;
+  }
+
+  .art-section p:last-child { margin-bottom: 0; }
+
+  .art-section ul, .art-section ol {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .art-section ul li, .art-section ol li {
+    color: var(--text-muted);
+    font-size: 0.97rem;
+    line-height: 1.8;
+    padding-left: 26px;
+    position: relative;
+    counter-increment: list-counter;
+  }
+
+  .art-section ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 0.85rem;
+    top: 3px;
+  }
+
+  .art-section ol {
+    counter-reset: list-counter;
+  }
+
+  .art-section ol li::before {
+    content: counter(list-counter) ".";
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 0.85rem;
+    font-weight: 700;
+    top: 1px;
+  }
+
+  /* Highlight callout */
+  .callout {
+    background: rgba(59,130,246,0.07);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 10px 10px 0;
+    padding: 20px 24px;
+    margin: 26px 0;
+  }
+
+  .callout p {
+    color: var(--text) !important;
+    font-size: 1.04rem !important;
+    line-height: 1.75 !important;
+    margin-bottom: 0 !important;
+    font-style: italic;
+  }
+
+  /* Mistake cards */
+  .mistake-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .mistake-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    display: flex;
+    gap: 18px;
+  }
+
+  .mistake-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(59,130,246,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-light);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    margin-top: 2px;
+  }
+
+  .mistake-content h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.0rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .mistake-content p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 0 !important;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59,130,246,0.15), transparent);
+    margin: 0;
+  }
+
+  /* CTA block */
+  .art-cta {
+    background: linear-gradient(135deg, var(--bg3) 0%, rgba(29,78,216,0.12) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 44px 40px;
+    margin-top: 60px;
+    text-align: center;
+  }
+
+  .art-cta h3 {
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 14px;
+  }
+
+  .art-cta p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 0 auto 28px;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--blue-dark); color: #fff; transform: translateY(-2px); }
+
+  .btn-secondary {
+    color: var(--blue-light);
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-block;
+    margin-left: 20px;
+  }
+
+  .btn-secondary:hover { color: #fff; }
+
+  /* ── ABOUT BLOCK ── */
+  .about-block {
+    background: var(--bg2);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--radius);
+    padding: 32px 36px;
+    margin-top: 48px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .about-icon {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(59,130,246,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+
+  .about-content p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.85;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .about-content p:last-child { margin-bottom: 0; }
+
+  .about-content strong {
+    color: var(--text);
+    font-style: normal;
+  }
+
+  .about-content a {
+    font-style: normal;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0A0C10;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 40px 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+  }
+
+  .footer-logo span { color: var(--blue); }
+
+  .footer-meta {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .footer-meta a { color: var(--text-muted); }
+  .footer-meta a:hover { color: var(--blue-light); }
+
+  .footer-right {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .footer-right a { color: var(--text-muted); }
+  .footer-right a:hover { color: var(--blue-light); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .about-block { flex-direction: column; gap: 16px; padding: 24px 22px; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-meta, .footer-right { text-align: center; }
+    .art-cta { padding: 30px 22px; }
+    .btn-secondary { display: block; margin: 16px auto 0; }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 14px 4vw; }
+    .page-header { padding: 100px 4vw 40px; }
+    .content-wrap { padding: 0 4vw 60px; }
+    .nav-back { display: none; }
+    .mistake-card { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Ilu<span>Space</span></a>
+  <div class="nav-right">
+    <a href="/blog" class="nav-back">← Blog</a>
+    <a href="mailto:ilu-space@madmantra.app" class="nav-cta">Talk to Us</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Ilu Space</a>
+    <span>/</span>
+    <a href="/blog">Blog</a>
+    <span>/</span>
+    Nordic AI Vendor Mistakes
+  </div>
+  <div class="page-label">Point of View · AI Procurement · Nordic</div>
+  <h1>What Nordic Companies Get <span class="accent">Wrong</span> When Hiring AI Vendors</h1>
+  <p class="header-summary">Nordic CTOs and heads of innovation keep running the same procurement playbook on AI — and getting the same result: expensive pilots that never ship. Here's the structural problem, and what actually works.</p>
+  <div class="post-meta">
+    <span class="post-meta-item">Ilu Space</span>
+    <span class="post-meta-dot"></span>
+    <span class="post-meta-item">5 min read</span>
+    <span class="post-meta-dot"></span>
+    <span class="post-meta-item">AI vendor selection · Nordic companies</span>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+  <div class="content-body">
+
+    <!-- SECTION 1 -->
+    <div class="art-section">
+      <div class="section-label">01 · The Setup</div>
+      <h2>The Problem Isn't the AI. It's the Procurement Model.</h2>
+      <p>Something keeps happening at Nordic companies investing in AI. A head of innovation identifies a real problem — care facility staffing, emissions tracking, supply chain visibility. Leadership approves a budget. A vendor is selected after a proper RFP process. A PoC is delivered on time. Stakeholders are impressed. The pilot report is filed.</p>
+      <p>And then nothing ships.</p>
+      <p>This isn't a technology failure. The models work. The vendors are competent. The problem is structural: Nordic companies are applying standard IT procurement logic to a class of work where that logic is exactly wrong.</p>
+      <div class="callout">
+        <p>Standard IT procurement optimises for risk reduction and vendor accountability. AI product development requires the opposite: speed, iteration, and someone who actually owns the outcome — not just the deliverable.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 2 -->
+    <div class="art-section">
+      <div class="section-label">02 · The Mistakes</div>
+      <h2>Three Structural Mistakes Nordic Buyers Keep Making</h2>
+
+      <div class="mistake-list">
+        <div class="mistake-card">
+          <div class="mistake-num">01</div>
+          <div class="mistake-content">
+            <h3>Treating a PoC as a project endpoint, not a starting point</h3>
+            <p>The classic procurement cycle has a defined deliverable: a proof of concept that demonstrates feasibility. The vendor delivers the PoC, the contract closes, the relationship ends. For IT systems with known specifications, this works fine. For AI products, a PoC is barely step two. The real work — integrating with live data, handling edge cases, getting real users to actually use it, iterating on what doesn't work — comes after the PoC. When the engagement ends at PoC delivery, all of that work gets orphaned. The internal team doesn't own it. There's no one to iterate. The pilot never graduates.</p>
+          </div>
+        </div>
+
+        <div class="mistake-card">
+          <div class="mistake-num">02</div>
+          <div class="mistake-content">
+            <h3>Selecting vendors on brand weight instead of shipping track record</h3>
+            <p>Nordic procurement committees are disciplined. They build scoring matrices. They weight criteria carefully. But the criteria that dominate — company size, reference client logos, methodology certifications, presentation quality — tell you almost nothing about whether a vendor will get AI to production. The large Nordic consultancies are excellent at strategy engagements. They're genuinely impressive in the room. What they're not optimised for is shipping a working AI product quickly, iterating on it with real users, and staying accountable until it runs in production. Brand weight and shipping track record are different things. Procurement processes tend to optimise for the first one.</p>
+          </div>
+        </div>
+
+        <div class="mistake-card">
+          <div class="mistake-num">03</div>
+          <div class="mistake-content">
+            <h3>Running AI like a committee decision, not an ownership problem</h3>
+            <p>AI adoption at Nordic companies is often governed by a cross-functional steering group: IT, business, compliance, legal, procurement, security. Each function has veto power. This governance model is appropriate for enterprise software procurement — standardised systems with well-understood risk profiles. It's toxic for AI product development. By the time a steering committee reaches consensus on what to build, the underlying assumptions are already wrong. The world has moved. The data has changed. A vendor who's waiting for sign-off on each iteration is a vendor who can't move fast enough to get AI working. AI product development needs an owner, not a committee.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 3 -->
+    <div class="art-section">
+      <div class="section-label">03 · Why Nordic Companies Specifically</div>
+      <h2>This Isn't a Universal Problem. Nordic Companies Face Specific Pressure.</h2>
+      <p>Nordic companies aren't uniquely bad at procurement — they're among the best in the world at it. The problem is that the same institutional discipline that makes Nordic enterprises excellent at managing infrastructure projects creates structural friction when applied to AI.</p>
+      <p>And the timing pressure is real. Three forcing functions are compressing the window:</p>
+      <ul>
+        <li><strong>Eldercare:</strong> Finland's dependency ratio is projected to reach 60.1 by 2045 (Statistics Finland). Fewer working-age people supporting more elderly residents means care facilities need AI augmentation that actually ships and stays running — not pilots. The Qluve robot is in daily use in Finnish care facilities today because someone owned the outcome past the PoC stage.</li>
+        <li><strong>CSRD compliance:</strong> The EU's Corporate Sustainability Reporting Directive started applying to large companies for 2024 financial year results. Wave two extends to more companies. The "stop-the-clock" directive of April 2025 paused wave two and three requirements — but only temporarily. Companies that treated CSRD compliance as an AI pilot to be evaluated are now behind companies that shipped the software and have real data.</li>
+        <li><strong>Manufacturing and logistics automation:</strong> Finnish manufacturing — precision engineering, process industries, logistics — is under sustained automation pressure. AI-driven quality inspection, predictive maintenance, and process optimisation are moving from competitive advantage to competitive necessity. The companies that figure out how to actually ship these systems, not just evaluate them, will pull ahead.</li>
+      </ul>
+      <p>None of these timelines accommodate orphaned pilots. They require AI that runs in production.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 4 -->
+    <div class="art-section">
+      <div class="section-label">04 · The Alternative Model</div>
+      <h2>What Gets AI Actually Shipped</h2>
+      <p>The companies that ship AI — not just evaluate it — share a structural pattern: someone on their side owns the outcome past the PoC. That person has the technical range to cover the whole build (AI/ML, backend, infrastructure, integration), the authority to make decisions without a steering committee sign-off, and the accountability that doesn't end when a contract phase closes.</p>
+      <p>This is what a technical co-founder does inside a startup. It's structurally different from a vendor relationship. A vendor delivers to specification. A co-founder owns the problem.</p>
+      <div class="callout">
+        <p>The question isn't "which AI vendor should we hire?" It's "how do we get someone to actually own this outcome?" Those are different questions with different answers — and most Nordic procurement processes are only set up to answer the first one.</p>
+      </div>
+      <p>The practical implication: when evaluating AI partners, the most predictive question isn't "have you done this before at a company our size?" It's "what did you ship last, and can I talk to someone who's using it today?" Shipping track record is the signal. Everything else is presentation.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 5 -->
+    <div class="art-section">
+      <div class="section-label">05 · The Short Version</div>
+      <h2>If You're a Nordic CTO Evaluating AI Vendors Right Now</h2>
+      <p>Three questions worth asking before you run a PoC:</p>
+      <ol>
+        <li><strong>What happens after the PoC?</strong> Who owns iteration? Who's accountable if real users don't use it, or if the data looks different in production than it did in the demo? If the answer is "we'll scope that in a future phase," you're about to get an orphaned pilot.</li>
+        <li><strong>What has this vendor shipped to production — not demonstrated, shipped — in the last twelve months?</strong> Not "what have they built for clients similar to us?" but "what's running in production, with real users, generating real outcomes?" Ask for a contact at that organisation.</li>
+        <li><strong>Is your governance model compatible with the iteration speed AI requires?</strong> If getting approval to change a feature requires five stakeholder sign-offs and a steering committee session, your AI vendor will spend more time waiting than building. That's not the vendor's fault — it's a structural mismatch you should fix before you start.</li>
+      </ol>
+    </div>
+
+    <!-- CTA -->
+    <div class="art-cta">
+      <h3>Trying to Ship AI, Not Just Evaluate It?</h3>
+      <p>Ilu Space operates as a technical co-founder on demand — covering the full build from AI/ML to deployment, staying accountable until it's running in production with real users.</p>
+      <a href="mailto:ilu-space@madmantra.app" class="btn-primary">Talk to Us →</a>
+      <a href="/work/qluve-eldercare-robotics" class="btn-secondary">See what we've shipped →</a>
+    </div>
+
+    <!-- ABOUT BLOCK -->
+    <div class="about-block">
+      <div class="about-icon">🏗️</div>
+      <div class="about-content">
+        <p><strong>About Ilu Space:</strong> Ilu Space is a Helsinki-based AI product studio — a technical co-founder on demand for companies that need AI products built and shipped, not just evaluated. The studio covers the full build: AI/ML, backend, embedded systems, hardware, and production deployment. Past work includes Qluve, an eldercare AI companion robot deployed across Finnish care facilities, and CSRD compliance software for Nordic companies. If you have an AI product problem and need someone to own the outcome, <a href="mailto:ilu-space@madmantra.app">get in touch</a>.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-logo">Ilu<span>Space</span></a>
+  <div class="footer-meta">
+    © <span class="year"></span> Ilu Space. Helsinki, Finland.<br>
+    <a href="mailto:ilu-space@madmantra.app">ilu-space@madmantra.app</a>
+  </div>
+  <div class="footer-right">
+    Powered by <a href="https://madmantra.com" target="_blank" rel="noopener">MadMantra</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.year').forEach(function(e){ e.textContent = new Date().getFullYear(); });
+</script>
+</body>
+</html>

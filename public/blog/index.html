@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Ilu Space | AI Product Studio Helsinki</title>
+<meta name="description" content="Insights on AI product development, Nordic AI adoption, technical co-founder models, and shipping AI that actually works in production. From the Ilu Space team in Helsinki.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ilu-space.madmantra.app/blog">
+
+<!-- Social / OG -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ilu-space.madmantra.app/blog">
+<meta property="og:title" content="Blog — Ilu Space | AI Product Studio Helsinki">
+<meta property="og:description" content="Insights on AI product development, Nordic AI adoption, and shipping AI that actually works in production.">
+<meta property="og:image" content="https://www.madmantra.com/og/landing?name=Ilu%20Space&tagline=AI%20Product%20Studio%20Helsinki&slug=ilu-space">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blog — Ilu Space | AI Product Studio Helsinki">
+<meta name="twitter:description" content="Insights on AI product development, Nordic AI adoption, and shipping AI that actually works in production.">
+<meta name="twitter:image" content="https://www.madmantra.com/og/landing?name=Ilu%20Space&tagline=AI%20Product%20Studio%20Helsinki&slug=ilu-space">
+<meta name="twitter:site" content="@madmantra">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0F1117;
+    --bg2: #161820;
+    --bg3: #1C1F2E;
+    --blue: #3B82F6;
+    --blue-light: #60A5FA;
+    --blue-dark: #1D4ED8;
+    --text: #E8EAF0;
+    --text-muted: #8892A4;
+    --border: rgba(59,130,246,0.18);
+    --card-bg: rgba(28,31,46,0.85);
+    --radius: 14px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+  }
+
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { color: var(--blue-light); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 6vw;
+    background: rgba(15,17,23,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(59,130,246,0.10);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--blue); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-back {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .nav-back:hover { color: var(--blue-light); }
+
+  .nav-cta {
+    background: var(--blue);
+    color: #fff;
+    padding: 9px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-cta:hover { background: var(--blue-dark); color: #fff; }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    padding: 120px 6vw 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .page-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(59,130,246,0.3);
+    color: var(--blue-light);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .page-header h1 {
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+
+  .page-header p {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 560px;
+  }
+
+  /* ── POSTS GRID ── */
+  .posts-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 6vw 100px;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  .post-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: border-color 0.2s, transform 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .post-card:hover {
+    border-color: rgba(59,130,246,0.4);
+    transform: translateY(-3px);
+    color: inherit;
+  }
+
+  .post-tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue-light);
+    background: rgba(59,130,246,0.1);
+    padding: 4px 10px;
+    border-radius: 4px;
+    width: fit-content;
+  }
+
+  .post-card h2 {
+    font-size: 1.18rem;
+    color: #fff;
+    line-height: 1.35;
+    letter-spacing: -0.2px;
+  }
+
+  .post-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    flex: 1;
+  }
+
+  .post-read-more {
+    font-size: 0.88rem;
+    color: var(--blue);
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  .post-card:hover .post-read-more { color: var(--blue-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0A0C10;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 40px 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+  }
+
+  .footer-logo span { color: var(--blue); }
+
+  .footer-meta {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .footer-meta a { color: var(--text-muted); }
+  .footer-meta a:hover { color: var(--blue-light); }
+
+  .footer-right {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .footer-right a { color: var(--text-muted); }
+  .footer-right a:hover { color: var(--blue-light); }
+
+  @media (max-width: 768px) {
+    .posts-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-meta, .footer-right { text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 14px 4vw; }
+    .page-header { padding: 100px 4vw 40px; }
+    .posts-wrap { padding: 0 4vw 60px; }
+    .nav-back { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Ilu<span>Space</span></a>
+  <div class="nav-right">
+    <a href="/" class="nav-back">← Home</a>
+    <a href="mailto:ilu-space@madmantra.app" class="nav-cta">Talk to Us</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-label">Insights · Ilu Space</div>
+  <h1>Blog</h1>
+  <p>AI product development, Nordic AI adoption, and what it takes to get AI from pilot to production. Written from the build floor, not the strategy deck.</p>
+</div>
+
+<!-- POSTS -->
+<div class="posts-wrap">
+  <div class="posts-grid">
+
+    <a href="/blog/nordic-ai-vendor-selection-mistakes" class="post-card">
+      <span class="post-tag">Point of View · Nordic</span>
+      <h2>What Nordic Companies Get Wrong When Hiring AI Vendors</h2>
+      <p>Nordic CTOs keep running standard IT procurement logic on AI — and getting orphaned pilots. Here's the structural mismatch, and what actually gets AI shipped.</p>
+      <span class="post-read-more">Read article →</span>
+    </a>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-logo">Ilu<span>Space</span></a>
+  <div class="footer-meta">
+    © <span class="year"></span> Ilu Space. Helsinki, Finland.<br>
+    <a href="mailto:ilu-space@madmantra.app">ilu-space@madmantra.app</a>
+  </div>
+  <div class="footer-right">
+    Powered by <a href="https://madmantra.com" target="_blank" rel="noopener">MadMantra</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.year').forEach(function(e){ e.textContent = new Date().getFullYear(); });
+</script>
+</body>
+</html>
