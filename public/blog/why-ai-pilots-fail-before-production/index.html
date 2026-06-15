@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Most AI Pilots Fail Before Production | Ilu Space</title>
+<meta name="description" content="AI pilots stall at POC because of misaligned ownership, absent builders, and wrong early stack choices. Here's the structural fix CTOs need to hear.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ilu-space.madmantra.app/blog/why-ai-pilots-fail-before-production">
+
+<!-- Social / OG -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ilu-space.madmantra.app/blog/why-ai-pilots-fail-before-production">
+<meta property="og:title" content="Why Most AI Pilots Fail Before Production">
+<meta property="og:description" content="AI pilots stall at POC because of misaligned ownership, absent builders, and wrong early stack choices. Here's the structural fix CTOs need to hear.">
+<meta property="og:image" content="https://www.madmantra.com/og/landing?name=Ilu%20Space&tagline=AI%20Product%20Studio%20Helsinki&slug=ilu-space">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Why Most AI Pilots Fail Before Production">
+<meta name="twitter:description" content="AI pilots stall at POC because of misaligned ownership, absent builders, and wrong early stack choices. Here's the structural fix CTOs need to hear.">
+<meta name="twitter:image" content="https://www.madmantra.com/og/landing?name=Ilu%20Space&tagline=AI%20Product%20Studio%20Helsinki&slug=ilu-space">
+<meta name="twitter:site" content="@madmantra">
+
+<!-- Article Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Why Most AI Pilots Fail Before They Reach Production",
+  "description": "AI pilots stall at POC because of misaligned ownership, absent builders, and wrong early stack choices. Here's the structural fix CTOs need to hear.",
+  "author": {
+    "@type": "Organization",
+    "name": "Ilu Space",
+    "url": "https://ilu-space.madmantra.app"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ilu Space",
+    "url": "https://ilu-space.madmantra.app"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://ilu-space.madmantra.app/blog/why-ai-pilots-fail-before-production"
+  },
+  "keywords": "why AI pilots fail production, AI pilot to production, AI POC failure, technical co-founder Finland, AI product studio Helsinki, AI implementation CTO"
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0F1117;
+    --bg2: #161820;
+    --bg3: #1C1F2E;
+    --blue: #3B82F6;
+    --blue-light: #60A5FA;
+    --blue-dark: #1D4ED8;
+    --text: #E8EAF0;
+    --text-muted: #8892A4;
+    --border: rgba(59,130,246,0.18);
+    --card-bg: rgba(28,31,46,0.85);
+    --radius: 14px;
+    --content-width: 760px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+  }
+
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { color: var(--blue-light); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 6vw;
+    background: rgba(15,17,23,0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(59,130,246,0.10);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-logo span { color: var(--blue); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-back {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .nav-back:hover { color: var(--blue-light); }
+
+  .nav-cta {
+    background: var(--blue);
+    color: #fff;
+    padding: 9px 22px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    transition: background 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-cta:hover { background: var(--blue-dark); color: #fff; }
+
+  /* ── PAGE HEADER ── */
+  .page-header {
+    padding: 120px 6vw 60px;
+    max-width: calc(var(--content-width) + 12vw);
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .breadcrumb a { color: var(--text-muted); }
+  .breadcrumb a:hover { color: var(--blue-light); }
+  .breadcrumb span { color: rgba(255,255,255,0.2); }
+
+  .page-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(59,130,246,0.3);
+    color: var(--blue-light);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .page-header h1 {
+    font-size: clamp(1.9rem, 4.5vw, 3rem);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    line-height: 1.15;
+  }
+
+  .page-header h1 .accent { color: var(--blue); }
+
+  .header-summary {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 620px;
+    margin-bottom: 0;
+  }
+
+  /* Reading time / meta */
+  .post-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .post-meta-item {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .post-meta-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    opacity: 0.4;
+  }
+
+  /* ── CONTENT ── */
+  .content-wrap {
+    max-width: calc(var(--content-width) + 12vw);
+    margin: 0 auto;
+    padding: 0 6vw 80px;
+  }
+
+  .content-body {
+    max-width: var(--content-width);
+  }
+
+  /* Article section */
+  .art-section {
+    margin: 52px 0;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(59,130,246,0.15);
+    max-width: 60px;
+  }
+
+  .art-section h2 {
+    font-size: clamp(1.3rem, 2.8vw, 1.85rem);
+    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
+  }
+
+  .art-section p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.9;
+    margin-bottom: 18px;
+  }
+
+  .art-section p:last-child { margin-bottom: 0; }
+
+  .art-section ul, .art-section ol {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .art-section ul li, .art-section ol li {
+    color: var(--text-muted);
+    font-size: 0.97rem;
+    line-height: 1.8;
+    padding-left: 26px;
+    position: relative;
+    counter-increment: list-counter;
+  }
+
+  .art-section ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 0.85rem;
+    top: 3px;
+  }
+
+  .art-section ol {
+    counter-reset: list-counter;
+  }
+
+  .art-section ol li::before {
+    content: counter(list-counter) ".";
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-size: 0.85rem;
+    font-weight: 700;
+    top: 1px;
+  }
+
+  /* Highlight callout */
+  .callout {
+    background: rgba(59,130,246,0.07);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 10px 10px 0;
+    padding: 20px 24px;
+    margin: 26px 0;
+  }
+
+  .callout p {
+    color: var(--text) !important;
+    font-size: 1.04rem !important;
+    line-height: 1.75 !important;
+    margin-bottom: 0 !important;
+    font-style: italic;
+  }
+
+  /* Failure cards */
+  .mistake-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .mistake-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    display: flex;
+    gap: 18px;
+  }
+
+  .mistake-num {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(59,130,246,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--blue-light);
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.82rem;
+    margin-top: 2px;
+  }
+
+  .mistake-content h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.0rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .mistake-content p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 0 !important;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(59,130,246,0.15), transparent);
+    margin: 0;
+  }
+
+  /* CTA block */
+  .art-cta {
+    background: linear-gradient(135deg, var(--bg3) 0%, rgba(29,78,216,0.12) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 44px 40px;
+    margin-top: 60px;
+    text-align: center;
+  }
+
+  .art-cta h3 {
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 14px;
+  }
+
+  .art-cta p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 0 auto 28px;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--blue-dark); color: #fff; transform: translateY(-2px); }
+
+  .btn-secondary {
+    color: var(--blue-light);
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-block;
+    margin-left: 20px;
+  }
+
+  .btn-secondary:hover { color: #fff; }
+
+  /* ── ABOUT BLOCK ── */
+  .about-block {
+    background: var(--bg2);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: var(--radius);
+    padding: 32px 36px;
+    margin-top: 48px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .about-icon {
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: rgba(59,130,246,0.12);
+    border: 1px solid rgba(59,130,246,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+  }
+
+  .about-content p {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.85;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .about-content p:last-child { margin-bottom: 0; }
+
+  .about-content strong {
+    color: var(--text);
+    font-style: normal;
+  }
+
+  .about-content a {
+    font-style: normal;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0A0C10;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 40px 6vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #fff;
+  }
+
+  .footer-logo span { color: var(--blue); }
+
+  .footer-meta {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .footer-meta a { color: var(--text-muted); }
+  .footer-meta a:hover { color: var(--blue-light); }
+
+  .footer-right {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .footer-right a { color: var(--text-muted); }
+  .footer-right a:hover { color: var(--blue-light); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .about-block { flex-direction: column; gap: 16px; padding: 24px 22px; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-meta, .footer-right { text-align: center; }
+    .art-cta { padding: 30px 22px; }
+    .btn-secondary { display: block; margin: 16px auto 0; }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 14px 4vw; }
+    .page-header { padding: 100px 4vw 40px; }
+    .content-wrap { padding: 0 4vw 60px; }
+    .nav-back { display: none; }
+    .mistake-card { flex-direction: column; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">Ilu<span>Space</span></a>
+  <div class="nav-right">
+    <a href="/blog" class="nav-back">← Blog</a>
+    <a href="mailto:ilu-space@madmantra.app" class="nav-cta">Talk to Us</a>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Ilu Space</a>
+    <span>/</span>
+    <a href="/blog">Blog</a>
+    <span>/</span>
+    Why AI Pilots Fail
+  </div>
+  <div class="page-label">Point of View · AI Implementation · CTO</div>
+  <h1>Why Most AI Pilots <span class="accent">Fail</span> Before They Reach Production</h1>
+  <p class="header-summary">The technology works. The vendor is competent. The PoC impressed everyone. And then nothing ships. Here's the structural reason AI pilots stall — and the three fixes that actually change the outcome.</p>
+  <div class="post-meta">
+    <span class="post-meta-item">Ilu Space</span>
+    <span class="post-meta-dot"></span>
+    <span class="post-meta-item">6 min read</span>
+    <span class="post-meta-dot"></span>
+    <span class="post-meta-item">AI pilots · production · technical ownership</span>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+  <div class="content-body">
+
+    <!-- SECTION 1 -->
+    <div class="art-section">
+      <div class="section-label">01 · The Pattern</div>
+      <h2>The Pilot Worked. So Why Is Nothing Running in Production?</h2>
+      <p>It happens on a reliable schedule. A CTO or head of innovation identifies a genuine problem — predictive maintenance in a manufacturing line, triage assistance in a logistics operation, documentation support in a clinical setting. A vendor is engaged. A proof of concept is delivered. The demo goes well. Stakeholders are cautiously optimistic. And then the pilot enters a holding pattern that lasts months, sometimes years, and eventually quietly dies.</p>
+      <p>This is the AI pilot graveyard. It is large, it is growing, and it is almost entirely avoidable. The failure mode is not technical — it is structural. And the same three structural problems appear across industries, company sizes, and geographies with remarkable consistency.</p>
+      <div class="callout">
+        <p>AI pilots don't fail because AI doesn't work. They fail because the conditions required for AI to reach production are structurally different from the conditions that make a PoC succeed — and most organisations set up only for the latter.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 2 -->
+    <div class="art-section">
+      <div class="section-label">02 · The Three Failures</div>
+      <h2>Three Structural Reasons Your Pilot Won't Reach Production</h2>
+
+      <div class="mistake-list">
+        <div class="mistake-card">
+          <div class="mistake-num">01</div>
+          <div class="mistake-content">
+            <h3>Nobody owns the outcome — only the deliverable</h3>
+            <p>A PoC has a clear deliverable: a working demonstration of a capability. The vendor is accountable for that deliverable. When the PoC is accepted, the contract phase closes, and the vendor's accountability ends. What comes next — integration with real systems, handling edge cases the demo never encountered, getting actual users to change their workflow, iterating when the first version doesn't land — has no owner. The internal team inherited something they didn't build and don't fully understand. The vendor has moved on. The outcome — AI running in production, generating real value — belongs to nobody. And things that belong to nobody don't get done.</p>
+          </div>
+        </div>
+
+        <div class="mistake-card">
+          <div class="mistake-num">02</div>
+          <div class="mistake-content">
+            <h3>There is no builder in the room</h3>
+            <p>A technically accountable, product-minded builder — someone who can look at a production failure, understand why it happened, and fix it the same afternoon — is almost never embedded on the client side during an AI engagement. What companies typically have is a project manager, a steering committee, and a vendor relationship. What they need is someone who treats the outcome like their own problem: who can speak both to the AI/ML details and to the product decisions, who has skin in the game past the contract phase, and who doesn't need a week of sign-offs to make a technical call. The absence of this person is the single most predictable leading indicator of a pilot that won't graduate. You can have a brilliant vendor team and still end up with nothing in production if no one on your side is actually a builder.</p>
+          </div>
+        </div>
+
+        <div class="mistake-card">
+          <div class="mistake-num">03</div>
+          <div class="mistake-content">
+            <h3>The stack was chosen to win the pilot, not to survive production</h3>
+            <p>Early stack choices have a disproportionate effect on production viability, and they are almost always made under the wrong constraints. In a PoC context, the incentives point toward the fastest demo path: a managed API, a no-code pipeline, a framework the vendor team knows well, infrastructure that requires no internal ops involvement. These choices minimise time-to-demo. They frequently maximise time-to-production — or make production structurally impossible. Real production requirements — latency budgets, data residency constraints, integration with legacy systems, compliance needs, operational costs at scale — are rarely the dominant design constraints when the goal is impressing a steering committee by Friday. By the time these constraints surface, the architectural choices have compounded and the cost of changing them is prohibitive. The pilot succeeded at being a pilot. It was never designed to be a product.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 3 -->
+    <div class="art-section">
+      <div class="section-label">03 · Why This Is Hard to See from Inside</div>
+      <h2>The PoC Success Signal Is Actively Misleading</h2>
+      <p>Part of what makes this structural failure so persistent is that the PoC success signal — stakeholder approval, positive demo, steering committee sign-off — looks exactly like real progress. It generates momentum, optimism, and budget confidence. The problems are all downstream, and they're invisible at the moment when decisions about next steps are being made.</p>
+      <p>The vendor team is incentivised to deliver a compelling demo and close the phase successfully. The internal project team is incentivised to report positive progress upward. The steering committee is incentivised to confirm that the investment is on track. Nobody in this system is incentivised to raise the question: "What happens after the PoC?"</p>
+      <p>By the time that question becomes urgent — when integration stalls, when the production environment looks nothing like the demo environment, when the first real users don't behave the way the PoC assumed — the window for making different structural choices has closed.</p>
+      <div class="callout">
+        <p>The most dangerous moment in an AI engagement is a successful PoC with no clear owner for what comes next. Momentum without accountability is how pilots become shelf-ware.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 4 -->
+    <div class="art-section">
+      <div class="section-label">04 · The Structural Fix</div>
+      <h2>What Actually Changes the Outcome</h2>
+      <p>The fix for all three failure modes is the same structural change: get someone to own the outcome — not just the deliverable — from day one.</p>
+      <p>This is what a technical co-founder does inside a startup. They're not a vendor delivering to specification. They treat the outcome as their problem. They make architectural decisions with production in mind from the first commit. They stay accountable past the phase boundary because there is no phase boundary for them — there's just the product, and whether it's working.</p>
+      <p>In a corporate context, this means embedding a technically accountable builder — someone with the range to cover AI/ML, backend, infrastructure, and integration — who has the authority to make decisions without a steering committee sign-off and the accountability that doesn't end when the pilot phase closes. Call it a technical co-founder on demand, a fractional CTO, or an embedded engineering lead. The title matters less than the structural relationship: skin in the game, not a vendor contract.</p>
+      <ul>
+        <li><strong>Ownership over deliverables:</strong> Define success as "AI running in production with real users" — not "PoC accepted." The person accountable for the outcome should own that definition from the start.</li>
+        <li><strong>A builder in the room from day one:</strong> Before a vendor is selected, before a PoC is scoped, someone on your side should be able to evaluate technical choices through a production lens. This is not a project manager. This is someone who can read the code, challenge the architecture, and stay accountable for the outcome.</li>
+        <li><strong>Production constraints as design inputs:</strong> Latency, data residency, operational cost, integration requirements, compliance obligations — these must be design constraints on the PoC, not post-PoC discovery items. The question "can this run in our production environment?" should be answered before the architecture is chosen, not after it's built.</li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- SECTION 5 -->
+    <div class="art-section">
+      <div class="section-label">05 · What to Ask Before You Start</div>
+      <h2>Three Questions Worth Answering Before You Commission a PoC</h2>
+      <p>If you're a CTO or head of innovation about to engage an AI vendor, these three questions are worth being honest about before you start — because the answers determine whether the pilot has a realistic path to production or is structurally set up to fail.</p>
+      <ol>
+        <li><strong>Who on our side owns the outcome past the PoC phase?</strong> Not "who manages the vendor relationship" — who owns whether AI reaches production and works with real users? If the answer is "we'll figure that out in the next phase," the pilot doesn't have an owner yet. That's the most important hire or engagement to make before anything else.</li>
+        <li><strong>What are our actual production constraints, and are they reflected in the PoC architecture?</strong> List the constraints that will matter in production: data residency, integration complexity, latency requirements, operational budget, compliance requirements, internal ops capacity. Ask the vendor how each one is reflected in the PoC design. If the answer is "we'll address those in phase two," push back. Stack choices compound. Reversing them later is expensive.</li>
+        <li><strong>What has this vendor shipped to production — not demonstrated, shipped — in the last twelve months?</strong> A vendor with a strong demo track record and a weak shipping track record is a vendor optimised for the wrong success metric. Ask for a reference at an organisation where AI went from PoC to production with real users. Ask that reference what the vendor did in the months after the demo. That's the period that matters.</li>
+      </ol>
+    </div>
+
+    <!-- CTA -->
+    <div class="art-cta">
+      <h3>Need AI in Production, Not Just in a Demo?</h3>
+      <p>Ilu Space operates as a technical co-founder on demand — covering the full build from AI/ML to production deployment, staying accountable until the system is running with real users.</p>
+      <a href="mailto:ilu-space@madmantra.app" class="btn-primary">Talk to Us →</a>
+      <a href="/blog/nordic-ai-vendor-selection-mistakes" class="btn-secondary">Also: What Nordic companies get wrong hiring AI vendors →</a>
+    </div>
+
+    <!-- ABOUT BLOCK -->
+    <div class="about-block">
+      <div class="about-icon">🏗️</div>
+      <div class="about-content">
+        <p><strong>About Ilu Space:</strong> Ilu Space is a Helsinki-based AI product studio — a technical co-founder on demand for companies that need AI products built and shipped, not just evaluated. The studio covers the full build: AI/ML, backend, embedded systems, hardware, and production deployment. Past work includes Qluve, an eldercare AI companion robot deployed across Finnish care facilities, and CSRD compliance software for Nordic companies. If you have an AI product that's stuck at pilot and you need someone to own the outcome, <a href="mailto:ilu-space@madmantra.app">get in touch</a>.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-logo">Ilu<span>Space</span></a>
+  <div class="footer-meta">
+    © <span class="year"></span> Ilu Space. Helsinki, Finland.<br>
+    <a href="mailto:ilu-space@madmantra.app">ilu-space@madmantra.app</a>
+  </div>
+  <div class="footer-right">
+    Powered by <a href="https://madmantra.com" target="_blank" rel="noopener">MadMantra</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.year').forEach(function(e){ e.textContent = new Date().getFullYear(); });
+</script>
+</body>
+</html>
