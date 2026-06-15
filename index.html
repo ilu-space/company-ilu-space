@@ -63,9 +63,27 @@
     font-weight: 700;
     color: #fff;
     letter-spacing: -0.5px;
+    flex-shrink: 0;
   }
 
   .nav-logo span { color: var(--blue); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-links a:hover { color: #fff; }
 
   .nav-cta {
     background: var(--blue);
@@ -76,9 +94,14 @@
     font-size: 0.88rem;
     transition: background 0.2s;
     white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .nav-cta:hover { background: var(--blue-dark); color: #fff; }
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+  }
 
   /* ── HERO ── */
   .hero {
@@ -763,6 +786,14 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Ilu<span>Space</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#founder">About</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="/blog">Blog</a></li>
+  </ul>
   <a href="#contact" class="nav-cta">Book a Discovery Call</a>
 </nav>
 
@@ -869,7 +900,7 @@
 <div class="divider"></div>
 
 <!-- VERTICALS -->
-<section class="verticals-bg">
+<section id="industries" class="verticals-bg">
   <div class="section-header reveal">
     <span class="section-label">Industries</span>
     <h2 class="section-title">Where We Go Deep</h2>
@@ -990,7 +1021,7 @@
     <div id="contact-form" class="contact-form-wrap reveal">
       <h3>Start the Conversation</h3>
       <p class="sub">Share a bit about your project and the best way to reach you — we'll be in touch to schedule a call.</p>
-      <form id="discovery-form" action="https://api.madmantra.app/api/landing/ilu-space/signup" method="POST">
+      <form id="discovery-form" data-mm-signup action="https://api.madmantra.app/api/landing/ilu-space/signup" method="POST">
         <div class="form-group">
           <input type="text" name="name" placeholder="Your name" required>
         </div>
@@ -1085,6 +1116,36 @@
       }, 100);
     }
   }
+</script>
+<script>
+(function () {
+  document.querySelectorAll('form[data-mm-signup]').forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = {};
+      new FormData(form).forEach(function (v, k) { if (v) data[k] = v; });
+      var btn = form.querySelector('button, input[type=submit]');
+      if (btn) btn.disabled = true;
+      fetch('https://api.madmantra.app/api/landing/ilu-space/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }).then(function (r) {
+        if (!r.ok) throw new Error('signup failed');
+        form.innerHTML =
+          '<div role="status" style="text-align:center;padding:24px 8px">' +
+          '<div style="font-size:40px;line-height:1">&#9989;</div>' +
+          '<h3 style="margin:12px 0 6px">Message received!</h3>' +
+          '<p style="margin:0;opacity:.8">Thanks for reaching out. We will be in touch shortly.</p>' +
+          '</div>';
+        form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }).catch(function () {
+        if (btn) btn.disabled = false;
+        alert('Something went wrong — please try again.');
+      });
+    });
+  });
+})();
 </script>
 </body>
 </html>
