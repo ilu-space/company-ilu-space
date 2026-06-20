@@ -763,6 +763,142 @@
     .contact-form-wrap { padding: 24px 18px; }
   }
 
+  /* ── PROOF OF WORK ── */
+  .pow-section { background: var(--bg); }
+
+  .pow-trust-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    margin-bottom: 52px;
+    padding: 18px 24px;
+    background: rgba(59,130,246,0.06);
+    border: 1px solid rgba(59,130,246,0.16);
+    border-radius: var(--radius);
+    align-items: center;
+  }
+
+  .pow-trust-strip .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .pow-trust-strip .trust-item::before {
+    content: '●';
+    font-size: 0.5rem;
+    color: var(--blue);
+    flex-shrink: 0;
+  }
+
+  .pow-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 22px;
+  }
+
+  .pow-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: border-color 0.25s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pow-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue), transparent);
+  }
+
+  .pow-card:hover {
+    border-color: rgba(59,130,246,0.4);
+    transform: translateY(-4px);
+  }
+
+  .pow-card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .pow-card-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .pow-card h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: #fff;
+    margin-bottom: 12px;
+    line-height: 1.35;
+  }
+
+  .pow-card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.75;
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  .pow-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 16px 0;
+  }
+
+  .pow-result-tag {
+    background: rgba(59,130,246,0.1);
+    border: 1px solid rgba(59,130,246,0.22);
+    color: var(--blue-light);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 50px;
+  }
+
+  .pow-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--blue);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: color 0.2s, gap 0.2s;
+    text-decoration: none;
+  }
+
+  .pow-card-link:hover {
+    color: var(--blue-light);
+    gap: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .pow-trust-strip { gap: 8px 16px; }
+    .pow-cards { grid-template-columns: 1fr; }
+  }
+
   /* ── SCROLL REVEAL ── */
   .reveal {
     opacity: 1;
@@ -933,6 +1069,62 @@
     <div class="vd-card reveal">
       <h3><span>🤖</span> Embedded AI & Hardware</h3>
       <p>Most AI studios stop at software. We span the full stack — from cloud inference down to embedded firmware, custom PCB design, and 3D-printed enclosures. If your AI product needs to live in the physical world, this is a rare capability that matters enormously at deployment time.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROOF OF WORK -->
+<section id="proof" class="pow-section">
+  <div class="section-header reveal">
+    <span class="section-label">Proof of Work</span>
+    <h2 class="section-title">Shipped. Deployed. Real.</h2>
+    <p class="section-desc">Not slide decks or demos — production systems running in the real world, across hardware, climate software, and AI.</p>
+  </div>
+  <div class="pow-trust-strip reveal">
+    <span class="trust-item">Helsinki-based</span>
+    <span class="trust-item">Deployed in production</span>
+    <span class="trust-item">Full-stack from firmware to cloud</span>
+    <span class="trust-item">Clients across Nordic + EU markets</span>
+  </div>
+  <div class="pow-cards">
+    <div class="pow-card reveal">
+      <span class="pow-card-icon">🤖</span>
+      <span class="pow-card-label">Eldercare Robotics · Hardware + AI</span>
+      <h3>AI Companion Robot Deployed Across Finnish Care Facilities</h3>
+      <p>Designed and built a full-stack AI-powered companion robot for eldercare — spanning 3D-printed hardware, embedded firmware, voice AI in 50+ languages, and cloud infrastructure. Deployed with 3+ care organisations serving 12+ residents in production.</p>
+      <div class="pow-results">
+        <span class="pow-result-tag">3+ care orgs</span>
+        <span class="pow-result-tag">12+ residents</span>
+        <span class="pow-result-tag">50+ languages</span>
+        <span class="pow-result-tag">Live in Finnish facilities</span>
+      </div>
+      <a href="#proof" class="pow-card-link">Read the full case study →</a>
+    </div>
+    <div class="pow-card reveal">
+      <span class="pow-card-icon">🌍</span>
+      <span class="pow-card-label">Climate Tech · Enterprise SaaS</span>
+      <h3>Enterprise Carbon &amp; ESG Reporting Platform — CSRD-Aligned</h3>
+      <p>Built a full-stack ESG and carbon tracking platform for an enterprise client. Replaced a fragmented manual spreadsheet process with audit-ready, regulation-aligned reporting. Covers Scope 1–3 emissions, CSRD reporting requirements, and multi-entity consolidation.</p>
+      <div class="pow-results">
+        <span class="pow-result-tag">CSRD-aligned</span>
+        <span class="pow-result-tag">Scope 1–3 tracking</span>
+        <span class="pow-result-tag">Replaced manual process</span>
+        <span class="pow-result-tag">Deployed to production</span>
+      </div>
+    </div>
+    <div class="pow-card reveal">
+      <span class="pow-card-icon">⚙️</span>
+      <span class="pow-card-label">Embedded AI · Full-Stack Build</span>
+      <h3>Firmware-to-Cloud AI System — Physical Deployment</h3>
+      <p>End-to-end build of an AI-powered embedded system: custom hardware design, embedded firmware, on-device edge inference, cloud backend, and physical deployment. Demonstrates rare full-stack capability spanning the entire hardware/software boundary.</p>
+      <div class="pow-results">
+        <span class="pow-result-tag">Edge inference</span>
+        <span class="pow-result-tag">Custom hardware</span>
+        <span class="pow-result-tag">Embedded firmware</span>
+        <span class="pow-result-tag">Physically deployed</span>
+      </div>
     </div>
   </div>
 </section>
