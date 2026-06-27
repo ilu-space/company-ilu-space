@@ -766,6 +766,100 @@
   /* ── PROOF OF WORK ── */
   .pow-section { background: var(--bg); }
 
+  /* ── QLUVE CREDIBILITY CARDS ── */
+  .qluve-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+    margin-bottom: 40px;
+  }
+
+  .qluve-card {
+    background: var(--card-bg);
+    border: 1px solid rgba(59,130,246,0.28);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+
+  .qluve-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--blue-light), transparent);
+  }
+
+  .qluve-card:hover {
+    border-color: rgba(59,130,246,0.5);
+    transform: translateY(-4px);
+  }
+
+  .qluve-card-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .qluve-metric {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .qluve-context {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    flex: 1;
+    margin-bottom: 20px;
+  }
+
+  .qluve-quote-slot {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 16px;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: rgba(136,146,164,0.5);
+    min-height: 36px;
+  }
+
+  .qluve-trust-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    margin-bottom: 52px;
+    padding: 14px 24px;
+    background: rgba(59,130,246,0.06);
+    border: 1px solid rgba(59,130,246,0.16);
+    border-radius: var(--radius);
+    align-items: center;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .qluve-trust-strip::before {
+    content: '🤖';
+    font-style: normal;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 768px) {
+    .qluve-cards { grid-template-columns: 1fr; }
+  }
+
   .pow-trust-strip {
     display: flex;
     flex-wrap: wrap;
@@ -1082,6 +1176,36 @@
     <h2 class="section-title">Shipped. Deployed. Real.</h2>
     <p class="section-desc">Not slide decks or demos — production systems running in the real world, across hardware, climate software, and AI.</p>
   </div>
+
+  <!-- Qluve outcome-based credibility cards — sources: qluve.com, kvtuki57.fi/ajankohtaista/lauri-ja-qluve/ -->
+  <div class="qluve-cards reveal">
+    <!-- Card 1: Scale -->
+    <div class="qluve-card" aria-label="Qluve deployment scale — source: qluve.com">
+      <span class="qluve-card-label">Qluve · Eldercare AI · Scale</span>
+      <div class="qluve-metric">3+ care organisations.<br>12+ residents.<br>Live in production.</div>
+      <p class="qluve-context">Qluve — an AI voice companion robot built by Ilu Space — is deployed across Finnish residential care communities including Karhurinteen kotiyhteisö and Myllykaaren kotiyhteisö. Not a pilot. Real residents, every day.</p>
+      <div class="qluve-quote-slot">Reference quote coming soon.</div>
+    </div>
+    <!-- Card 2: Language & reach -->
+    <div class="qluve-card" aria-label="Qluve language support — source: qluve.com">
+      <span class="qluve-card-label">Qluve · Eldercare AI · Reach</span>
+      <div class="qluve-metric">50+ languages.<br>One device.</div>
+      <p class="qluve-context">Natural voice conversations, mood detection, medication reminders, and two-way caregiver messaging — all running on hardware Ilu Space designed from firmware to cloud.</p>
+      <div class="qluve-quote-slot">Reference quote coming soon.</div>
+    </div>
+    <!-- Card 3: Always-on reliability -->
+    <div class="qluve-card" aria-label="Qluve 24/7 reliability — source: qluve.com">
+      <span class="qluve-card-label">Qluve · Eldercare AI · Reliability</span>
+      <div class="qluve-metric">24/7 companion support.<br>No staff overhead.</div>
+      <p class="qluve-context">Automatic sentiment analysis flags loneliness and pain; caregivers receive prioritised alerts. Continuous — no manual intervention required.</p>
+      <div class="qluve-quote-slot">Reference quote coming soon.</div>
+    </div>
+  </div>
+  <!-- Qluve trust strip -->
+  <div class="qluve-trust-strip reveal">
+    Helsinki-based &nbsp;·&nbsp; deployed in Finnish care homes &nbsp;·&nbsp; firmware to cloud &nbsp;·&nbsp; three care organisations in production
+  </div>
+
   <div class="pow-trust-strip reveal">
     <span class="trust-item">Helsinki-based</span>
     <span class="trust-item">Deployed in production</span>
@@ -1100,7 +1224,7 @@
         <span class="pow-result-tag">50+ languages</span>
         <span class="pow-result-tag">Live in Finnish facilities</span>
       </div>
-      <a href="#proof" class="pow-card-link">Read the full case study →</a>
+      <a href="/work/qluve-eldercare-robotics" class="pow-card-link">Read the full case study →</a>
     </div>
     <div class="pow-card reveal">
       <span class="pow-card-icon">🌍</span>
