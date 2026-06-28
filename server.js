@@ -1,5 +1,5 @@
 const express=require('express'),path=require('path'),app=express();
-app.use(express.static('public'));app.use(express.json());
+app.use(express.json());
 app.get('/',(r,s)=>s.sendFile(path.join(__dirname,'index.html')));
 app.get('/work/qluve-eldercare-robotics',(r,s)=>s.sendFile(path.join(__dirname,'public/work/qluve-eldercare-robotics/index.html')));
 app.get('/ai-product-studio',(r,s)=>s.sendFile(path.join(__dirname,'public/ai-product-studio/index.html')));
@@ -7,6 +7,7 @@ app.get('/blog',(r,s)=>s.sendFile(path.join(__dirname,'public/blog/index.html'))
 app.get('/blog/nordic-ai-vendor-selection-mistakes',(r,s)=>s.sendFile(path.join(__dirname,'public/blog/nordic-ai-vendor-selection-mistakes/index.html')));
 app.get('/blog/why-ai-pilots-fail-before-production',(r,s)=>s.sendFile(path.join(__dirname,'public/blog/why-ai-pilots-fail-before-production/index.html')));
 app.get('/blog/technical-co-founder-finland',(r,s)=>s.sendFile(path.join(__dirname,'public/blog/technical-co-founder-finland/index.html')));
+app.use(express.static('public'));
 app.post('/api/signup',(r,s)=>{console.log('Signup:',r.body);s.json({success:true})});
 app.post('/api/analytics',(r,s)=>s.json({success:true}));
 app.get('/success',(r,s)=>s.send('<html><body style="display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:sans-serif"><div style="text-align:center"><h1>Thank you!</h1><p>Purchase successful.</p><a href="/">Go back</a></div></body></html>'));
