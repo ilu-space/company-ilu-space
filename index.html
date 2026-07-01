@@ -993,6 +993,134 @@
     .pow-cards { grid-template-columns: 1fr; }
   }
 
+  /* ── SPRINT ZERO BOOKING CTA ── */
+  .booking-section {
+    background: linear-gradient(160deg, #0F1117 0%, rgba(29,78,216,0.10) 60%, #0F1117 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(59,130,246,0.12);
+    border-bottom: 1px solid rgba(59,130,246,0.12);
+  }
+
+  .booking-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 36px 36px;
+    pointer-events: none;
+  }
+
+  .booking-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .booking-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(59,130,246,0.10);
+    border: 1px solid rgba(59,130,246,0.28);
+    color: var(--blue-light);
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 5px 16px;
+    border-radius: 50px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .booking-eyebrow::before { content: '◎'; font-size: 0.65rem; }
+
+  .booking-section h2 {
+    font-size: clamp(1.7rem, 3.8vw, 2.6rem);
+    color: #fff;
+    margin-bottom: 14px;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+  }
+
+  .booking-section h2 em {
+    font-style: normal;
+    color: var(--blue-light);
+  }
+
+  .booking-section .booking-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-bottom: 36px;
+    line-height: 1.75;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .booking-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--blue);
+    color: #fff;
+    padding: 16px 36px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    box-shadow: 0 0 0 0 rgba(59,130,246,0);
+    margin-bottom: 28px;
+  }
+
+  .booking-btn:hover {
+    background: var(--blue-dark);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(59,130,246,0.28);
+  }
+
+  .booking-btn svg {
+    flex-shrink: 0;
+  }
+
+  .booking-trust-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    padding: 14px 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .booking-trust-strip .bt-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--blue);
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 600px) {
+    .booking-btn { font-size: 0.97rem; padding: 14px 26px; }
+    .booking-trust-strip { font-size: 0.78rem; }
+  }
+
   /* ── SCROLL REVEAL ── */
   .reveal {
     opacity: 1;
@@ -1025,7 +1153,7 @@
     <li><a href="/work">Work</a></li>
     <li><a href="/blog">Blog</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Book a Discovery Call</a>
+  <a href="#book" class="nav-cta">Book 20-min Call</a>
 </nav>
 
 <!-- HERO -->
@@ -1321,6 +1449,35 @@
     <div class="faq-item reveal">
       <div class="faq-q">What does engagement cost?</div>
       <div class="faq-a">Pricing is scoped per project and varies considerably depending on scope, duration, and engagement type. AI Integration Sprints are bounded and priced as fixed-scope packages. Co-founder engagements and larger builds are typically structured with a monthly retainer plus milestone payments. The right starting point is a discovery call — there's no pressure and no pitch, just a direct conversation about whether there's a fit worth pursuing.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SPRINT ZERO BOOKING CTA -->
+<section class="booking-section" id="book">
+  <div class="booking-inner reveal">
+    <div class="booking-eyebrow">Sprint Zero · Discovery Call</div>
+    <h2>Book a 20-min technical<br>discovery call — <em>no pitch deck</em></h2>
+    <p class="booking-desc">Straight into the problem. We'll cover your technical challenge, your stack, and whether there's a fit worth pursuing — in 20 minutes flat. If there isn't, we'll tell you.</p>
+    <div>
+      <a
+        href="mailto:ilu-space@madmantra.app?subject=Discovery%20call%20request%20%E2%80%94%20Ilu%20Space&body=Hi%2C%0A%0AI'd%20like%20to%20book%20a%2020-min%20discovery%20call.%0A%0AWhat%20I'm%20working%20on%3A%20%5Bbriefly%20describe%20your%20challenge%5D%0A%0ABest%20times%20for%20me%3A%20%5Badd%20your%20availability%5D%0A%0AThanks"
+        class="booking-btn"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Book the 20-min call →
+      </a>
+    </div>
+    <div class="booking-trust-strip">
+      <span>Helsinki</span>
+      <span class="bt-dot"></span>
+      <span>Full-stack firmware → cloud</span>
+      <span class="bt-dot"></span>
+      <span>Deployed in production</span>
+      <span class="bt-dot"></span>
+      <span>Senior builder, not a PM</span>
     </div>
   </div>
 </section>
